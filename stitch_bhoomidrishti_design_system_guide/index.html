@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BhoomiDrishti — Land Governance & Cadastral Intelligence</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-dim": "#051424",
+            "surface-container": "#0b1e2e",
+            "teal-core": "#2dd4bf",
+            "teal-hover": "#57f1db"
+          },
+          fontFamily: {
+            headline: ["Space Grotesk", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #051424;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-surface-dim text-white font-body selection:bg-teal-core selection:text-black">
+
+  <!-- Full-Screen Slide Display Viewport -->
+  <iframe id="slide-viewport" src="" title="BhoomiDrishti Presentation Deck"></iframe>
+
+  <!-- Quick Slide Drawer / Jump Menu (Hidden by default) -->
+  <div id="slide-menu" class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 z-50 w-80 max-w-[90vw] p-3 rounded-2xl bg-[#010f1f]/95 backdrop-blur-xl border border-teal-core/30 shadow-2xl">
+    <div class="flex items-center justify-between pb-2 mb-2 border-b border-white/10 font-mono text-xs text-teal-core uppercase">
+      <span>Jump to Slide</span>
+      <button onclick="toggleSlideMenu()" class="text-slate-400 hover:text-white">✕</button>
+    </div>
+    <div id="slide-menu-list" class="flex flex-col gap-1 max-h-60 overflow-y-auto font-mono text-xs">
+      <!-- Populated via JavaScript -->
+    </div>
+  </div>
+
+  <!-- Persistent Floating Navigation Pill -->
+  <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 sm:gap-4 px-4 py-2 rounded-full bg-[#010f1f]/95 backdrop-blur-xl border border-teal-core/40 shadow-[0_0_24px_rgba(45,212,191,0.2)]">
+    
+    <!-- Previous Button -->
+    <button 
+      id="prev-btn" 
+      type="button" 
+      onclick="changeSlide(-1)"
+      class="inline-flex items-center gap-1 text-slate-300 hover:text-white text-xs font-mono transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+    >
+      <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+      <span class="hidden sm:inline">Back</span>
+    </button>
+
+    <span class="h-4 w-px bg-white/20"></span>
+
+    <!-- Quick Jump Trigger & Status -->
+    <button 
+      type="button"
+      onclick="toggleSlideMenu()"
+      class="flex items-center gap-2 hover:bg-white/5 px-2 py-1 rounded-lg transition-colors cursor-pointer group"
+      title="Click to jump to any slide"
+    >
+      <span class="w-2 h-2 rounded-full bg-teal-core animate-pulse"></span>
+      <span id="step-indicator" class="font-mono text-xs text-teal-core uppercase tracking-wider font-semibold">
+        STEP 1 OF 8
+      </span>
+      <span class="material-symbols-outlined text-slate-400 text-sm group-hover:text-teal-core transition-colors">unfold_more</span>
+    </button>
+
+    <span class="h-4 w-px bg-white/20"></span>
+
+    <!-- Next / Restart Button -->
+    <button 
+      id="next-btn" 
+      type="button" 
+      onclick="changeSlide(1)"
+      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-core text-[#070B14] text-xs font-mono font-bold hover:bg-teal-hover transition-all active:scale-95 shadow-sm cursor-pointer"
+    >
+      <span id="next-label">Next</span>
+      <span id="next-icon" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </button>
+
+  </footer>
+
+  <script>
+    // Configuration: Match each step to its folder in your repository
+    const slides = [
+      { step: 1, title: "Executive Dashboard", path: "./bhoomidrishti_district_officer_cala_dashboard/index.html" },
+      { step: 2, title: "National GIS Risk Map", path: "./bhoomidrishti_national_gis_risk_map/index.html" },
+      { step: 3, title: "RFCTLARR Pipeline", path: "./bhoomidrishti_rfctlarr_pipeline/index.html" },
+      { step: 4, title: "Predictive Hotspots", path: "./bhoomidrishti_predictive_hotspots/index.html" },
+      { step: 5, title: "R&R Compensation", path: "./bhoomidrishti_rr_compensation/index.html" },
+      { step: 6, title: "CALA Casework", path: "./bhoomidrishti_district_officer_cala_dashboard/index.html" },
+      { step: 7, title: "Admin & Model Center", path: "./bhoomidrishti_admin_data_scientist_command_center/index.html" },
+      { step: 8, title: "Design System & Legend", path: "./bhoomidrishti_design_system_cartographic_legend/index.html" }
+    ];
+
+    const totalSteps = slides.length;
+    let currentStep = 1;
+
+    // Load initial step from URL (e.g. ?step=7) or default to 1
+    function getInitialStep() {
+      const params = new URLSearchParams(window.location.search);
+      const stepParam = parseInt(params.get('step'), 10);
+      if (stepParam && stepParam >= 1 && stepParam <= totalSteps) {
+        return stepParam;
+      }
+      return 1;
+    }
+
+    function renderSlide(stepNumber) {
+      currentStep = stepNumber;
+      const slide = slides[currentStep - 1];
+
+      // 1. Update the iframe source
+      const viewport = document.getElementById('slide-viewport');
+      if (viewport.getAttribute('src') !== slide.path) {
+        viewport.src = slide.path;
+      }
+
+      // 2. Update status label
+      document.getElementById('step-indicator').innerText = `STEP ${slide.step} OF ${totalSteps}: ${slide.title}`;
+
+      // 3. Update Prev Button
+      const prevBtn = document.getElementById('prev-btn');
+      prevBtn.disabled = (currentStep === 1);
+
+      // 4. Update Next / Restart Button
+      const nextLabel = document.getElementById('next-label');
+      const nextIcon = document.getElementById('next-icon');
+      if (currentStep === totalSteps) {
+        nextLabel.innerText = "Restart";
+        nextIcon.innerText = "replay";
+      } else {
+        nextLabel.innerText = "Next";
+        nextIcon.innerText = "arrow_forward";
+      }
+
+      // 5. Sync step in browser URL without refreshing
+      const newUrl = `${window.location.pathname}?step=${currentStep}`;
+      window.history.replaceState({ step: currentStep }, '', newUrl);
+
+      // Close menu if open
+      document.getElementById('slide-menu').classList.add('hidden');
+    }
+
+    function changeSlide(direction) {
+      if (currentStep === totalSteps && direction === 1) {
+        renderSlide(1); // Restart
+      } else {
+        const target = currentStep + direction;
+        if (target >= 1 && target <= totalSteps) {
+          renderSlide(target);
+        }
+      }
+    }
+
+    function toggleSlideMenu() {
+      const menu = document.getElementById('slide-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Build the jump menu list
+    function populateMenu() {
+      const list = document.getElementById('slide-menu-list');
+      list.innerHTML = '';
+      slides.forEach(s => {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'w-full text-left px-2.5 py-1.5 rounded hover:bg-white/10 text-slate-200 hover:text-white flex items-center justify-between transition-colors';
+        item.innerHTML = `<span>${s.step}. ${s.title}</span><span class="text-[10px] text-teal-core">Go →</span>`;
+        item.onclick = () => renderSlide(s.step);
+        list.appendChild(item);
+      });
+    }
+
+    // Keyboard navigation (← and → arrows)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      populateMenu();
+      renderSlide(getInitialStep());
+    });
+  </script>
+</body>
+</html>
