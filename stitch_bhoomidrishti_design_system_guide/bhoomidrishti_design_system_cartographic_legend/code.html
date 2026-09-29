@@ -1,0 +1,946 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BhoomiDrishti — Precision Survey System Design Manual</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            ink: "#070B14",
+            "ink-card": "#0F1626",
+            "ink-card-light": "#162238",
+            "teal-core": "#2DD4BF",
+            "teal-glow": "rgba(45, 212, 191, 0.25)",
+            "border-subtle": "rgba(255, 255, 255, 0.08)",
+            "text-primary": "#E6EAF2",
+            "text-secondary": "#8B95A8",
+            "risk-low": "#34D399",
+            "risk-medium": "#FBBF24",
+            "risk-high": "#F97316",
+            "risk-critical": "#EF4444",
+          },
+          fontFamily: {
+            heading: ["Space Grotesk", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+            devanagari: ["Noto Sans", "sans-serif"],
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    /* Cartographic grid and micro-ruler backgrounds */
+    .survey-grid {
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+    .topo-layer {
+      background-image: radial-gradient(ellipse at 15% 10%, rgba(45, 212, 191, 0.08) 0%, transparent 60%);
+    }
+    .survey-tick-h {
+      background-image: repeating-linear-gradient(to right, rgba(255,255,255,0.2) 0, rgba(255,255,255,0.2) 1px, transparent 1px, transparent 20px);
+    }
+    .survey-tick-v {
+      background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.2) 0, rgba(255,255,255,0.2) 1px, transparent 1px, transparent 20px);
+    }
+    @keyframes sweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: sweep 8s linear infinite;
+    }
+    .animate-spin-fast {
+      animation: sweep 1.5s linear infinite;
+    }
+    /* Glow filter utility */
+    .filter-glow-teal {
+      filter: drop-shadow(0 0 12px rgba(45, 212, 191, 0.45));
+    }
+    .filter-glow-red {
+      filter: drop-shadow(0 0 14px rgba(239, 68, 68, 0.45));
+    }
+  </style>
+</head>
+<body class="bg-ink text-text-primary font-body antialiased selection:bg-teal-core selection:text-ink min-h-screen">
+<!-- ================= TOP COMMAND BAR ================= -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-ink/95 backdrop-blur-xl border-b border-border-subtle">
+<div class="h-16 px-5 flex items-center justify-between gap-4">
+<!-- Brand & Collapsible Nav Anchor -->
+<div class="flex items-center gap-3.5">
+<button class="p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-ink-card border border-transparent hover:border-border-subtle transition-all">
+<span class="material-symbols-outlined text-xl">menu</span>
+</button>
+<div class="flex items-center gap-3 pl-1">
+<!-- Concentric Topo Eye Glyph (Mini 28px) -->
+<svg class="w-8 h-8 text-teal-core flex-shrink-0" fill="none" viewBox="0 0 48 48">
+<!-- Almond boundary -->
+<path d="M4 24C9 14 18 8 24 8C30 8 39 14 44 24C39 34 30 40 24 40C18 40 9 34 4 24Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+<!-- 5 Topo contour rings -->
+<ellipse cx="24" cy="24" rx="14" ry="10" stroke="currentColor" stroke-opacity="0.9" stroke-width="1.2"></ellipse>
+<ellipse cx="24" cy="24" rx="10.5" ry="7.5" stroke="currentColor" stroke-opacity="0.8" stroke-width="1.2"></ellipse>
+<ellipse cx="24" cy="24" rx="7.5" ry="5.5" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.2"></ellipse>
+<ellipse cx="24" cy="24" rx="4.5" ry="3.5" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.2"></ellipse>
+<circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+</svg>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1.5">
+<span class="font-heading font-bold text-lg tracking-tight text-white">BhoomiDrishti</span>
+<span class="font-devanagari text-teal-core text-xs font-semibold">भूमिदृष्टि</span>
+</div>
+<span class="font-mono text-[9px] tracking-wider text-text-secondary uppercase">DoLR • Cartographic Spatial Core v1.4</span>
+</div>
+</div>
+</div>
+<!-- Quick Search Bar -->
+<div class="hidden md:flex items-center flex-1 max-w-md mx-6">
+<div class="w-full flex items-center bg-ink-card px-3 py-1.5 rounded-lg border border-border-subtle focus-within:border-teal-core/50 transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-base mr-2">search</span>
+<input class="bg-transparent text-xs text-text-primary placeholder:text-text-secondary/70 focus:outline-none w-full font-mono" placeholder="Search survey parcel, Section 19 notification, token spec..." type="text">
+<kbd class="font-mono text-[10px] bg-ink px-1.5 py-0.5 rounded text-text-secondary border border-border-subtle">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions & Sovereign User Identity -->
+<div class="flex items-center gap-3">
+<!-- Switchable Role Badge -->
+<div class="hidden sm:flex items-center bg-ink-card border border-border-subtle rounded-lg p-0.5 font-mono text-[11px]">
+<button class="px-2.5 py-1 rounded bg-teal-core text-ink font-semibold shadow-sm">District Officer (CALA)</button>
+<button class="px-2.5 py-1 rounded text-text-secondary hover:text-text-primary transition-colors">State Policymaker</button>
+<button class="px-2 py-1 rounded text-text-secondary hover:text-text-primary transition-colors">Admin</button>
+</div>
+<!-- Notification Bell with Ping Dot -->
+<button class="relative p-2 rounded-lg bg-ink-card border border-border-subtle text-text-secondary hover:text-text-primary transition-colors">
+<span class="material-symbols-outlined text-lg leading-none">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-risk-critical ring-2 ring-ink"></span>
+</button>
+<!-- User Avatar & Profile Badge -->
+<div class="flex items-center gap-2.5 pl-2 border-l border-border-subtle">
+<img alt="Officer Profile Avatar" class="w-9 h-9 rounded-lg object-cover ring-1 ring-teal-core/40 shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1WGt4a_MHjslgf-CakPVVHmXzwn8qADmycaelKqAQVpjaVSzopdk6Jbki55xDyL8oHy9QUJLoCzMlqB_i1NMNPu5SQkzygtNQn5ZLb4n6Gg7OU_jJw5-UZTz8_y9M02LZ-qcu4riu1XQVk3_PDSS5x5wMbhnWta5oHTyOnTluw68wlwZlk3rBamAb9H9PBpzoFpHbpa_8PsBF3XpshSZTl1GoS4c1UvBuWFE3OkJjcRAmKCIgBZ_aypDCw">
+<div class="hidden lg:flex flex-col text-left">
+<span class="text-xs font-semibold text-text-primary leading-tight">Shri R. V. Raman, IAS</span>
+<span class="font-mono text-[10px] text-text-secondary leading-none">Competent Authority • CALA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2px Institutional Sovereign Tri-Color Alignment Stripe -->
+<div class="w-full h-[2px] flex">
+<div class="h-full flex-1 bg-[#FF9933]"></div>
+<div class="h-full flex-1 bg-[#FFFFFF]"></div>
+<div class="h-full flex-1 bg-[#138808]"></div>
+</div>
+</header>
+<!-- ================= PRINTED SURVEY SHEET WORKSPACE FRAME ================= -->
+<div class="pt-20 pb-16 px-3 sm:px-6 lg:px-8 max-w-[1720px] mx-auto survey-grid topo-layer">
+<!-- CARTOGRAPHIC OUTER SHEET WRAPPER WITH CORNER CROSSHAIRS & MEASUREMENT TICKS -->
+<div class="relative border border-white/10 rounded-xl bg-ink/90 p-4 sm:p-7 shadow-2xl backdrop-blur-md">
+<!-- Corner Coordinate Crosshairs -->
+<div class="absolute -top-3 -left-3 font-mono text-[10px] text-teal-core bg-ink px-1.5 py-0.5 border border-white/20 rounded z-20 flex items-center gap-1 shadow-sm">
+<span class="text-white">+</span> 18° 31' 44" N, 73° 51' 22" E
+      </div>
+<div class="absolute -top-3 -right-3 font-mono text-[10px] text-teal-core bg-ink px-1.5 py-0.5 border border-white/20 rounded z-20 flex items-center gap-1 shadow-sm">
+<span class="text-white">+</span> 18° 31' 44" N, 74° 18' 09" E
+      </div>
+<div class="absolute -bottom-3 -left-3 font-mono text-[10px] text-teal-core bg-ink px-1.5 py-0.5 border border-white/20 rounded z-20 flex items-center gap-1 shadow-sm">
+<span class="text-white">+</span> 17° 58' 12" N, 73° 51' 22" E
+      </div>
+<div class="absolute -bottom-3 -right-3 font-mono text-[10px] text-teal-core bg-ink px-1.5 py-0.5 border border-white/20 rounded z-20 flex items-center gap-1 shadow-sm">
+<span class="text-white">+</span> 17° 58' 12" N, 74° 18' 09" E
+      </div>
+<!-- Top and Bottom Edge Coordinate Tick Ribbons -->
+<div class="w-full h-1.5 survey-tick-h opacity-40 mb-5"></div>
+<!-- HEADER SHEET LEDGER META -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 mb-8 border-b border-border-subtle gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="font-mono text-[11px] bg-teal-core/10 text-teal-core border border-teal-core/30 px-2 py-0.5 rounded uppercase tracking-wider font-semibold">
+              SURVEY SHEET LEGEND ARTIFACT • DOC-REF: BD-DS-2026-CALA
+            </span>
+<span class="font-mono text-[11px] text-text-secondary">• PROJECTION: EPSG:4326 WGS84</span>
+</div>
+<h1 class="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-white flex flex-wrap items-baseline gap-2">
+            BhoomiDrishti System Guidelines &amp; Component Legend
+            <span class="font-devanagari text-teal-core text-xl font-semibold">भूमिदृष्टि डिजाइन विधान</span>
+</h1>
+<p class="text-sm text-text-secondary mt-1 font-body">
+            Authoritative visual lexicon, statutory telemetry primitives, and mathematical delay indices governing Land Acquisition Act (RFCTLARR 2013).
+          </p>
+</div>
+<!-- Telemetry Spec Seal -->
+<div class="flex items-center gap-4 bg-ink-card p-3 rounded-lg border border-border-subtle self-start lg:self-auto font-mono">
+<div class="text-right">
+<div class="text-[10px] text-text-secondary uppercase">CALIBRATION STANDARD</div>
+<div class="text-xs text-white font-bold">RFCTLARR-2013-SEC25</div>
+</div>
+<div class="h-8 w-[1px] bg-border-subtle"></div>
+<div>
+<div class="text-[10px] text-teal-core uppercase font-semibold">STATUS</div>
+<div class="text-xs text-risk-low flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-risk-low animate-ping"></span> RATIFIED
+            </div>
+</div>
+</div>
+</div>
+<!-- ================= 12-COLUMN MAIN LAYOUT ================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- ================= SECTION 1: LOGO SPECIFICATION (hero top-left, 7 cols) ================= -->
+<section class="lg:col-span-7 bg-ink-card rounded-2xl p-6 border border-border-subtle flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-teal-core/5 rounded-full blur-3xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">01</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Logo Specification &amp; Cadastral Iris Symbol</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary uppercase">Vector Scalability Matrix</span>
+</div>
+<p class="text-xs text-text-secondary mb-6 leading-relaxed">
+              The symbol models a human surveying iris formed from 5 concentric topographic elevation contour rings nested within a razor almond boundary, framing future statutory milestones before lapse occurrences.
+            </p>
+<!-- Multi-scale Symbol Display: 96px, 48px, 24px across ink and light cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<!-- Dark Ink Container (#070B14) -->
+<div class="bg-ink p-5 rounded-xl border border-white/10 flex flex-col items-center justify-center gap-4 relative">
+<span class="absolute top-2 left-2 font-mono text-[9px] text-text-secondary">BACKGROUND: #070B14 (DEEP INK)</span>
+<div class="flex items-end justify-center gap-6 pt-4">
+<!-- 96px Mark -->
+<div class="flex flex-col items-center gap-2">
+<svg class="w-24 h-24 text-teal-core filter-glow-teal" fill="none" viewBox="0 0 96 96">
+<path d="M8 48C18 28 36 16 48 16C60 16 78 28 88 48C78 68 60 80 48 80C36 80 18 68 8 48Z" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path>
+<ellipse cx="48" cy="48" rx="28" ry="20" stroke="currentColor" stroke-opacity="0.9" stroke-width="1.8"></ellipse>
+<ellipse cx="48" cy="48" rx="21" ry="15" stroke="currentColor" stroke-opacity="0.8" stroke-width="1.6"></ellipse>
+<ellipse cx="48" cy="48" rx="15" ry="11" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.4"></ellipse>
+<ellipse cx="48" cy="48" rx="9" ry="7" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"></ellipse>
+<circle cx="48" cy="48" fill="currentColor" r="4"></circle>
+<!-- Cardinal Crosshairs -->
+<line stroke="currentColor" stroke-width="1.5" x1="48" x2="48" y1="4" y2="12"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="48" x2="48" y1="84" y2="92"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="4" x2="12" y1="48" y2="48"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="84" x2="92" y1="48" y2="48"></line>
+</svg>
+<span class="font-mono text-[10px] text-teal-core">96px Primary Hero</span>
+</div>
+<!-- 48px Mark -->
+<div class="flex flex-col items-center gap-2">
+<svg class="w-12 h-12 text-teal-core" fill="none" viewBox="0 0 48 48">
+<path d="M4 24C9 14 18 8 24 8C30 8 39 14 44 24C39 34 30 40 24 40C18 40 9 34 4 24Z" stroke="currentColor" stroke-width="2"></path>
+<ellipse cx="24" cy="24" rx="14" ry="10" stroke="currentColor" stroke-width="1.4"></ellipse>
+<ellipse cx="24" cy="24" rx="10.5" ry="7.5" stroke="currentColor" stroke-width="1.3"></ellipse>
+<ellipse cx="24" cy="24" rx="7" ry="5" stroke="currentColor" stroke-width="1.2"></ellipse>
+<circle cx="24" cy="24" fill="currentColor" r="2.2"></circle>
+</svg>
+<span class="font-mono text-[10px] text-text-secondary">48px Standard</span>
+</div>
+<!-- 24px Micro Mark (Engineered High Stroke Contrast) -->
+<div class="flex flex-col items-center gap-2">
+<svg class="w-6 h-6 text-teal-core" fill="none" viewBox="0 0 24 24">
+<path d="M2 12C4.5 7 9 4 12 4C15 4 19.5 7 22 12C19.5 17 15 20 12 20C9 20 4.5 17 2 12Z" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path>
+<ellipse cx="12" cy="12" rx="6.5" ry="4.5" stroke="currentColor" stroke-width="1.8"></ellipse>
+<circle cx="12" cy="12" fill="currentColor" r="2"></circle>
+</svg>
+<span class="font-mono text-[10px] text-text-secondary">24px Micro (Hi-Contrast)</span>
+</div>
+</div>
+</div>
+<!-- Lighter Card Background (#162238) -->
+<div class="bg-ink-card-light p-5 rounded-xl border border-white/10 flex flex-col items-center justify-center gap-4 relative">
+<span class="absolute top-2 left-2 font-mono text-[9px] text-text-secondary">SURFACE: #162238 (ELEVATED)</span>
+<div class="flex items-center gap-4 pt-4">
+<svg class="w-16 h-16 text-teal-core" fill="none" viewBox="0 0 64 64">
+<path d="M6 32C12 18 24 10 32 10C40 10 52 18 58 32C52 46 40 54 32 54C24 54 12 46 6 32Z" stroke="currentColor" stroke-width="2"></path>
+<ellipse cx="32" cy="32" rx="19" ry="13" stroke="currentColor" stroke-opacity="0.9" stroke-width="1.5"></ellipse>
+<ellipse cx="32" cy="32" rx="14" ry="9.5" stroke="currentColor" stroke-opacity="0.8" stroke-width="1.4"></ellipse>
+<ellipse cx="32" cy="32" rx="9" ry="6" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.3"></ellipse>
+<circle cx="32" cy="32" fill="currentColor" r="3"></circle>
+</svg>
+<div class="flex flex-col">
+<span class="font-heading font-bold text-xl text-white tracking-tight">BhoomiDrishti</span>
+<span class="font-devanagari text-teal-core text-sm font-semibold">भूमिदृष्टि</span>
+<span class="font-mono text-[10px] text-text-secondary mt-1">CALA Cartographic Decision Engine</span>
+</div>
+</div>
+<div class="w-full text-center border-t border-white/10 pt-2">
+<span class="font-mono text-[10px] text-text-secondary">Clearance margin: <strong class="text-teal-core">1.5X iris diameter</strong> on all edges</span>
+</div>
+</div>
+</div>
+<!-- Official Wordmark & Tagline Pairing -->
+<div class="bg-ink/50 p-4 rounded-xl border border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div>
+<div class="font-heading text-2xl font-bold text-white tracking-tight">
+                  BhoomiDrishti <span class="font-devanagari font-semibold text-teal-core text-xl ml-2">भूमिदृष्टि</span>
+</div>
+<div class="font-heading italic text-sm text-teal-core mt-0.5">
+                  "See delays before they happen."
+                </div>
+</div>
+<div class="font-mono text-[11px] text-text-secondary bg-ink px-3 py-1.5 rounded border border-border-subtle">
+                Single-token identity (Space Grotesk + Noto Sans Devanagari)
+              </div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 2: COLOR TAXONOMY & SWATCHES (5 cols) ================= -->
+<section class="lg:col-span-5 bg-ink-card rounded-2xl p-6 border border-border-subtle flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">02</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Color Taxonomy &amp; Contrast Rating</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary">WCAG AAA COMPLIANT</span>
+</div>
+<p class="text-xs text-text-secondary mb-4 leading-relaxed">
+              Structured dual-encoding palette. Risk indicators must never appear without paired glyphs and verbal state descriptors.
+            </p>
+<!-- Color Swatches Grid -->
+<div class="space-y-3">
+<!-- Base & Surfaces -->
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-ink p-2.5 rounded-lg border border-white/10 flex flex-col">
+<span class="text-[10px] text-text-secondary font-mono">Deep Ink #070B14</span>
+<span class="text-xs font-semibold text-white mt-1">Base Ground</span>
+<span class="text-[9px] text-risk-low font-mono mt-1">AAA • 18.2:1</span>
+</div>
+<div class="bg-ink-card p-2.5 rounded-lg border border-white/10 flex flex-col">
+<span class="text-[10px] text-text-secondary font-mono">Card #0F1626</span>
+<span class="text-xs font-semibold text-white mt-1">Cadastral Card</span>
+<span class="text-[9px] text-risk-low font-mono mt-1">AAA • 14.6:1</span>
+</div>
+<div class="bg-teal-core p-2.5 rounded-lg flex flex-col text-ink">
+<span class="text-[10px] font-mono font-bold">Accent #2DD4BF</span>
+<span class="text-xs font-bold mt-1">Electric Teal</span>
+<span class="text-[9px] font-mono mt-1 font-semibold">Primary Core</span>
+</div>
+</div>
+<!-- 4-Tier Statutory Risk Group -->
+<div class="bg-ink/60 p-3 rounded-xl border border-border-subtle space-y-2">
+<div class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Mandatory 4-Tier Risk Taxonomy</div>
+<!-- Low -->
+<div class="flex items-center justify-between bg-ink p-2 rounded-lg border border-risk-low/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-risk-low text-base">check_circle</span>
+<span class="text-xs font-semibold text-white">Low Risk</span>
+<span class="font-mono text-[10px] text-risk-low">#34D399</span>
+</div>
+<div class="font-mono text-[10px] text-text-secondary">P(lapse) &lt; 0.20 • AAA</div>
+</div>
+<!-- Medium -->
+<div class="flex items-center justify-between bg-ink p-2 rounded-lg border border-risk-medium/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-risk-medium text-base">warning</span>
+<span class="text-xs font-semibold text-white">Medium Watchlist</span>
+<span class="font-mono text-[10px] text-risk-medium">#FBBF24</span>
+</div>
+<div class="font-mono text-[10px] text-text-secondary">P(lapse) 0.20–0.60 • AAA</div>
+</div>
+<!-- High -->
+<div class="flex items-center justify-between bg-ink p-2 rounded-lg border border-risk-high/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-risk-high text-base">error</span>
+<span class="text-xs font-semibold text-white">High Escalated</span>
+<span class="font-mono text-[10px] text-risk-high">#F97316</span>
+</div>
+<div class="font-mono text-[10px] text-text-secondary">P(lapse) 0.60–0.85 • AAA</div>
+</div>
+<!-- Critical -->
+<div class="flex items-center justify-between bg-ink p-2 rounded-lg border border-risk-critical/30 bg-risk-critical/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-risk-critical text-base">local_fire_department</span>
+<span class="text-xs font-bold text-white">Critical Sec-25 Lapse</span>
+<span class="font-mono text-[10px] text-risk-critical">#EF4444</span>
+</div>
+<div class="font-mono text-[10px] text-risk-critical font-bold">P(lapse) &gt; 0.85 • AAA</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 3: QUAD-TYPOGRAPHY SPECIMEN (12 cols) ================= -->
+<section class="lg:col-span-12 bg-ink-card rounded-2xl p-6 border border-border-subtle">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">03</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Quad-Typography Scale Specimen</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary">Institutional Hierarchy • Bilingual Statutory Script</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+<!-- (A) Space Grotesk Headings -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 space-y-3">
+<div class="font-mono text-[10px] text-teal-core uppercase">Space Grotesk • Statutory Hierarchy</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">H1 / 36px</span>
+<div class="font-heading font-bold text-3xl text-white tracking-tight leading-none mt-1">Section 19</div>
+</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">H2 / 28px</span>
+<div class="font-heading font-semibold text-2xl text-white tracking-tight mt-1">Collector Award</div>
+</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">H3 / 22px</span>
+<div class="font-heading font-semibold text-lg text-white mt-1">Solatium Determination</div>
+</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">H4 / 18px</span>
+<div class="font-heading font-medium text-base text-white mt-1">Rehabilitation Scheme</div>
+</div>
+</div>
+<!-- (B) Inter Body & Microcopy -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 space-y-3">
+<div class="font-mono text-[10px] text-teal-core uppercase">Inter • Operational Legal Microcopy</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">Body Regular / 14px</span>
+<p class="text-xs text-text-secondary leading-relaxed mt-1">
+                  The appropriate Government shall ensure that the preliminary social impact assessment summary is notified in official gazettes and local Panchayats within 15 statutory working days.
+                </p>
+</div>
+<div class="border-t border-white/5 pt-2">
+<span class="font-mono text-[9px] text-text-secondary">Legal Micro-label / 11px</span>
+<p class="text-[11px] text-text-secondary/80 font-medium leading-normal mt-0.5">
+                  Sub-section (2) of Section 24: Land acquisition proceedings initiated under Land Acquisition Act 1894 shall lapse where no award has been made.
+                </p>
+</div>
+</div>
+<!-- (C) JetBrains Mono Telemetry & Currency -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 space-y-3">
+<div class="font-mono text-[10px] text-teal-core uppercase">JetBrains Mono • Telemetry &amp; Scores</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">Large KPI / 48px</span>
+<div class="font-mono font-bold text-4xl text-teal-core tracking-tight">₹ 4,821.40 Cr</div>
+<span class="text-[10px] text-text-secondary font-mono">Disbursed Compensation Pool</span>
+</div>
+<div class="grid grid-cols-2 gap-2 border-t border-white/5 pt-2 font-mono">
+<div>
+<span class="text-[9px] text-text-secondary block">PARCEL ID</span>
+<span class="text-xs font-semibold text-white">BD-2026-0417</span>
+</div>
+<div>
+<span class="text-[9px] text-text-secondary block">DELAY RISK</span>
+<span class="text-xs font-bold text-risk-critical">RISK 84</span>
+</div>
+<div>
+<span class="text-[9px] text-text-secondary block">ACTIVE AUDITS</span>
+<span class="text-xs font-semibold text-white">1,248 Claims</span>
+</div>
+<div>
+<span class="text-[9px] text-text-secondary block">AUC SCORE</span>
+<span class="text-xs font-semibold text-teal-core">0.892</span>
+</div>
+</div>
+</div>
+<!-- (D) Bilingual Devanagari Specimen -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 space-y-3">
+<div class="font-mono text-[10px] text-teal-core uppercase">Noto Sans Devanagari • Statutory Acts</div>
+<div>
+<span class="font-mono text-[9px] text-text-secondary">Heading Medium / 20px</span>
+<div class="font-devanagari font-bold text-base text-white mt-1 leading-snug">
+                  उचित प्रतिकर और पारदर्शिता का अधिकार अधिनियम
+                </div>
+</div>
+<div class="border-t border-white/5 pt-2">
+<span class="font-mono text-[9px] text-text-secondary">Official Title String / 13px</span>
+<p class="font-devanagari text-xs text-text-secondary leading-relaxed mt-1">
+                  "भूमि अधिग्रहण, पुनर्वासन और पुनर्व्यवस्थापन में उचित प्रतिकर और पारदर्शिता का अधिकार अधिनियम, 2013"
+                </p>
+<div class="mt-3 bg-ink-card p-2 rounded border border-border-subtle font-devanagari text-[11px] text-teal-core">
+                  अधिसूचना क्रमांक 11(1) — ग्राम सभा अनापत्ति प्रमाण पत्र स्वीकृत
+                </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 4: CIRCULAR RISK GAUGE COMPONENTS (8 cols) ================= -->
+<section class="lg:col-span-8 bg-ink-card rounded-2xl p-6 border border-border-subtle flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">04</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Circular Telemetry Risk Gauge Primitives</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary">12px Stroke • Mid-Fill Radiant Aura</span>
+</div>
+<p class="text-xs text-text-secondary mb-6">
+              Primary visual index for predicted statutory delay probability. Each ring employs thick 12px stroke caps with mathematical circumference offsets and calibrated radial glows.
+            </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- State 1: 32 Low -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
+<div class="relative w-28 h-28 flex items-center justify-center my-2">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="38" stroke="rgba(255,255,255,0.08)" stroke-width="9"></circle>
+<!-- 2 * pi * 38 = 238.76; 32% fill offset = 238.76 * (1 - 0.32) = 162.3 -->
+<circle class="filter-glow-teal" cx="50" cy="50" fill="none" r="38" stroke="#34D399" stroke-dasharray="238.76" stroke-dashoffset="162.3" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center font-mono">
+<span class="text-2xl font-bold text-risk-low leading-none">32</span>
+<span class="text-[8px] text-text-secondary mt-1">INDEX</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-risk-low text-xs font-semibold mt-2">
+<span class="material-symbols-outlined text-sm">check_circle</span> Low Risk
+                </div>
+<span class="font-mono text-[10px] text-text-secondary mt-0.5">P(lapse): 0.14</span>
+</div>
+<!-- State 2: 67 Medium -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
+<div class="relative w-28 h-28 flex items-center justify-center my-2">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="38" stroke="rgba(255,255,255,0.08)" stroke-width="9"></circle>
+<!-- offset = 238.76 * (1 - 0.67) = 78.8 -->
+<circle cx="50" cy="50" fill="none" r="38" stroke="#FBBF24" stroke-dasharray="238.76" stroke-dashoffset="78.8" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center font-mono">
+<span class="text-2xl font-bold text-risk-medium leading-none">67</span>
+<span class="text-[8px] text-text-secondary mt-1">INDEX</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-risk-medium text-xs font-semibold mt-2">
+<span class="material-symbols-outlined text-sm">warning</span> Watchlist
+                </div>
+<span class="font-mono text-[10px] text-text-secondary mt-0.5">P(lapse): 0.58</span>
+</div>
+<!-- State 3: 84 High -->
+<div class="bg-ink p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
+<div class="relative w-28 h-28 flex items-center justify-center my-2">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="38" stroke="rgba(255,255,255,0.08)" stroke-width="9"></circle>
+<!-- offset = 238.76 * (1 - 0.84) = 38.2 -->
+<circle cx="50" cy="50" fill="none" r="38" stroke="#F97316" stroke-dasharray="238.76" stroke-dashoffset="38.2" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center font-mono">
+<span class="text-2xl font-bold text-risk-high leading-none">84</span>
+<span class="text-[8px] text-text-secondary mt-1">INDEX</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-risk-high text-xs font-semibold mt-2">
+<span class="material-symbols-outlined text-sm">error</span> Escalated
+                </div>
+<span class="font-mono text-[10px] text-text-secondary mt-0.5">P(lapse): 0.79</span>
+</div>
+<!-- State 4: 91 Critical -->
+<div class="bg-ink p-4 rounded-xl border border-risk-critical/30 flex flex-col items-center text-center bg-risk-critical/5">
+<div class="relative w-28 h-28 flex items-center justify-center my-2">
+<svg class="w-full h-full transform -rotate-90 filter-glow-red" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="38" stroke="rgba(255,255,255,0.08)" stroke-width="9"></circle>
+<!-- offset = 238.76 * (1 - 0.91) = 21.5 -->
+<circle cx="50" cy="50" fill="none" r="38" stroke="#EF4444" stroke-dasharray="238.76" stroke-dashoffset="21.5" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center font-mono">
+<span class="text-2xl font-bold text-risk-critical leading-none">91</span>
+<span class="text-[8px] text-risk-critical mt-1 font-bold">SEC-25</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-risk-critical text-xs font-bold mt-2">
+<span class="material-symbols-outlined text-sm">local_fire_department</span> Critical Lapse
+                </div>
+<span class="font-mono text-[10px] text-risk-critical font-semibold mt-0.5">P(lapse): 0.93</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 5: RISK BADGES & ANIMATED PROGRESS BARS (4 cols) ================= -->
+<section class="lg:col-span-4 bg-ink-card rounded-2xl p-6 border border-border-subtle flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">05</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Badges &amp; Milestone Bars</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary uppercase">Statutory Clocks</span>
+</div>
+<!-- Risk Pill Badges -->
+<div class="space-y-2 mb-5">
+<span class="font-mono text-[10px] text-text-secondary uppercase block">Pill Badges (Mandatory Icon + Label)</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-risk-low/10 text-risk-low border border-risk-low/20">
+<span class="material-symbols-outlined text-sm">check_circle</span> Low Risk
+                </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-risk-medium/10 text-risk-medium border border-risk-medium/20">
+<span class="material-symbols-outlined text-sm">warning</span> Watchlist
+                </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-risk-high/10 text-risk-high border border-risk-high/20">
+<span class="material-symbols-outlined text-sm">error</span> Escalated
+                </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-risk-critical/15 text-risk-critical border border-risk-critical/30 animate-pulse">
+<span class="material-symbols-outlined text-sm">local_fire_department</span> Sec-25 Lapse
+                </span>
+</div>
+</div>
+<!-- Animated Milestone Bars -->
+<div class="space-y-4">
+<!-- Sec 19 12-Month Timer -->
+<div class="bg-ink p-3 rounded-xl border border-white/5 space-y-2">
+<div class="flex items-center justify-between text-xs font-mono">
+<span class="text-white font-medium">Sec 19 12-Mo Lapse Horizon</span>
+<span class="text-risk-critical font-bold">342 / 365 Days</span>
+</div>
+<div class="w-full bg-ink-card h-2 rounded-full overflow-hidden relative">
+<div class="h-full bg-gradient-to-r from-risk-high to-risk-critical rounded-full" style="width: 93%;"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-white animate-ping" style="left: 93%;"></div>
+</div>
+<div class="flex justify-between text-[10px] font-mono text-text-secondary">
+<span class="">Gazette Notification</span>
+<span class="text-risk-critical">23 Days Remaining</span>
+</div>
+</div>
+<!-- Sec 25 Collector Award Period -->
+<div class="bg-ink p-3 rounded-xl border border-white/5 space-y-2">
+<div class="flex items-center justify-between text-xs font-mono">
+<span class="text-white font-medium">Sec 25 Collector Award Clock</span>
+<span class="text-teal-core">210 / 365 Days</span>
+</div>
+<div class="w-full bg-ink-card h-2 rounded-full overflow-hidden relative">
+<div class="h-full bg-teal-core rounded-full" style="width: 57%;"></div>
+</div>
+<div class="flex justify-between text-[10px] font-mono text-text-secondary">
+<span class="">Declaration Done</span>
+<span class="text-teal-core">On Schedule</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 6: BUTTON PRIMITIVES & STATES (6 cols) ================= -->
+<section class="lg:col-span-6 bg-ink-card rounded-2xl p-6 border border-border-subtle flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">06</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Button Primitives &amp; Action States</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary uppercase">Interactive Controls</span>
+</div>
+<p class="text-xs text-text-secondary mb-4">
+              Tactile, high-density buttons for legal orders and spatial queries. Loading state features miniature rotating eye contour.
+            </p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<!-- Primary Teal -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[9px] text-text-secondary">PRIMARY ACTION</span>
+<button class="w-full bg-teal-core text-ink font-heading font-bold text-xs py-2 px-3 rounded-lg shadow-[0_0_12px_rgba(45,212,191,0.35)] hover:shadow-[0_0_18px_rgba(45,212,191,0.55)] transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">gavel</span> Issue Notice
+                </button>
+</div>
+<!-- Secondary Outline -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[9px] text-text-secondary">SECONDARY OUTLINE</span>
+<button class="w-full bg-transparent border border-white/20 text-white hover:border-teal-core text-xs py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">download</span> Export RoR
+                </button>
+</div>
+<!-- Ghost -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[9px] text-text-secondary">GHOST FILTER</span>
+<button class="w-full bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white text-xs py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">tune</span> Filter Layer
+                </button>
+</div>
+<!-- Destructive Crimson -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[9px] text-text-secondary">DESTRUCTIVE / LAPSE</span>
+<button class="w-full bg-risk-critical/15 text-risk-critical border border-risk-critical/30 hover:bg-risk-critical hover:text-white text-xs font-semibold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">cancel</span> Annul Section
+                </button>
+</div>
+<!-- Disabled -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[9px] text-text-secondary">DISABLED MUTED</span>
+<button class="w-full bg-white/5 text-text-secondary/40 border border-white/5 text-xs py-2 px-3 rounded-lg cursor-not-allowed flex items-center justify-center gap-1.5" disabled="">
+<span class="material-symbols-outlined text-sm">lock</span> Certified
+                </button>
+</div>
+<!-- Loading State with Rotating Eye Spinner -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[9px] text-teal-core">ACTIVE LOADING SPINNER</span>
+<button class="w-full bg-teal-core/20 border border-teal-core/40 text-teal-core text-xs font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 cursor-wait">
+<svg class="w-4 h-4 animate-spin-fast text-teal-core" fill="none" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-dasharray="28" stroke-dashoffset="10" stroke-width="2"></circle>
+<circle cx="12" cy="12" fill="currentColor" r="3"></circle>
+</svg>
+<span class="">Syncing GIS...</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 7: CARD SYSTEM (6 cols) ================= -->
+<section class="lg:col-span-6 bg-ink-card rounded-2xl p-6 border border-border-subtle flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">07</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Card System Primitives</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary uppercase">Surface Elevation Archetypes</span>
+</div>
+<p class="text-xs text-text-secondary mb-4">
+              Three distinct card surfaces for geospatial parcel dossiers and high-density telemetry.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<!-- (a) Standard Cadastral Card -->
+<div class="bg-ink-card p-3.5 rounded-2xl border border-white/10 flex flex-col justify-between h-36">
+<div>
+<span class="font-mono text-[9px] text-text-secondary block">TYPE A: STANDARD</span>
+<div class="text-xs font-bold text-white mt-1">Cadastral Card</div>
+<p class="text-[10px] text-text-secondary mt-1">Solid #0F1626, 1px border white/10, 16px radius.</p>
+</div>
+<div class="font-mono text-[10px] text-white/70">Parcel: MH-NGP-104</div>
+</div>
+<!-- (b) Glass Card with Contour Backdrop -->
+<div class="bg-ink-card/60 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 relative overflow-hidden flex flex-col justify-between h-36">
+<div class="absolute inset-0 opacity-15 pointer-events-none">
+<svg class="w-full h-full text-teal-core" fill="none" viewBox="0 0 100 100">
+<path d="M0 20 Q50 60 100 20 M0 50 Q50 90 100 50 M0 80 Q50 120 100 80" stroke="currentColor" stroke-width="0.8"></path>
+</svg>
+</div>
+<div class="relative z-10">
+<span class="font-mono text-[9px] text-teal-core block">TYPE B: GLASS OVER TOPO</span>
+<div class="text-xs font-bold text-white mt-1">Glass Dossier</div>
+<p class="text-[10px] text-text-secondary mt-1">rgba(15,22,38,0.6) + blur + vector contours.</p>
+</div>
+<div class="relative z-10 font-mono text-[10px] text-teal-core">Elevation: 412m AMSL</div>
+</div>
+<!-- (c) Active Hover State Card with Teal Edge Glow -->
+<div class="bg-ink-card p-3.5 rounded-2xl border border-teal-core/50 shadow-[inset_0_0_16px_rgba(45,212,191,0.18)] flex flex-col justify-between h-36 relative">
+<div>
+<span class="font-mono text-[9px] text-teal-core block">TYPE C: ACTIVE HOVER</span>
+<div class="text-xs font-bold text-white mt-1">Interactive Focus</div>
+<p class="text-[10px] text-teal-core/90 mt-1">Inner 16px cyan glow &amp; 40% border accentuation.</p>
+</div>
+<div class="flex items-center gap-1 font-mono text-[10px] text-teal-core font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-core animate-ping"></span> SELECTED RECEPTACLE
+                </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 8: RFCTLARR STATUTORY TABLE ROW SPECIMEN (12 cols) ================= -->
+<section class="lg:col-span-12 bg-ink-card rounded-2xl p-6 border border-border-subtle">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">08</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">RFCTLARR Statutory Pipeline Table Specimens</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary">Sticky Survey Header • Default, Hover &amp; Selected Row States</span>
+</div>
+<div class="w-full overflow-x-auto rounded-xl border border-white/10">
+<table class="w-full text-left border-collapse min-w-[960px] font-body text-xs">
+<!-- Survey Header -->
+<thead>
+<tr class="bg-ink font-mono text-[10px] text-text-secondary uppercase tracking-wider border-b border-white/10">
+<th class="py-3 px-4 font-semibold">Coord Mark / ID</th>
+<th class="py-3 px-4 font-semibold">Project &amp; Route Description</th>
+<th class="py-3 px-3 font-semibold">Sector</th>
+<th class="py-3 px-3 font-semibold">Legal RFCTLARR Stage</th>
+<th class="py-3 px-3 font-semibold text-center">Delay Index</th>
+<th class="py-3 px-4 font-semibold">Disbursed Pool</th>
+<th class="py-3 px-4 font-semibold text-right">Cadastral Action</th>
+</tr>
+</thead>
+<!-- Body with 3 explicit states -->
+<tbody class="divide-y divide-white/5">
+<!-- ROW 1: DEFAULT STATE -->
+<tr class="bg-ink-card transition-colors">
+<td class="py-3.5 px-4 font-mono text-[11px] text-text-secondary">
+<span class="bg-ink px-1.5 py-0.5 rounded border border-white/10">RJ-PW-2024-91</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-white">220kV Transmission Corridor Bhilwara</div>
+<div class="text-[10px] text-text-secondary">Rajasthan • Land Area: 412 Ha</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-white/5 text-text-secondary font-mono text-[10px]">Power Grid</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-mono text-[11px] text-teal-core">Sec 38 Possession</span>
+</td>
+<!-- Mini Gauge (67 Medium Watchlist) -->
+<td class="py-3.5 px-3 text-center">
+<div class="inline-flex items-center gap-1.5 font-mono">
+<svg class="w-5 h-5 -rotate-90" viewBox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="rgba(255,255,255,0.1)" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#FBBF24" stroke-dasharray="88" stroke-dashoffset="29" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="font-bold text-risk-medium">67</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-[11px] text-white">78%</span>
+<div class="w-16 bg-ink h-1.5 rounded-full overflow-hidden">
+<div class="bg-teal-core h-full" style="width: 78%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="bg-white/5 hover:bg-white/10 text-white px-2.5 py-1 rounded font-mono text-[10px] transition-colors">
+                      Audit
+                    </button>
+</td>
+</tr>
+<!-- ROW 2: HOVER HIGHLIGHT STATE -->
+<tr class="bg-ink-card-light/70 shadow-[inset_0_0_12px_rgba(255,255,255,0.03)] transition-colors">
+<td class="py-3.5 px-4 font-mono text-[11px] text-text-secondary">
+<span class="bg-ink px-1.5 py-0.5 rounded border border-white/20 text-white">GJ-RL-2023-03</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-white">Vadodara-Mumbai High Speed Rail Link</div>
+<div class="text-[10px] text-teal-core">Hover State Illumination Active</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-white/10 text-white font-mono text-[10px]">Railways</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-mono text-[11px] text-risk-medium font-medium">Sec 19 Declaration</span>
+</td>
+<!-- Mini Gauge (32 Low) -->
+<td class="py-3.5 px-3 text-center">
+<div class="inline-flex items-center gap-1.5 font-mono">
+<svg class="w-5 h-5 -rotate-90" viewBox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="rgba(255,255,255,0.1)" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#34D399" stroke-dasharray="88" stroke-dashoffset="60" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="font-bold text-risk-low">32</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-[11px] text-white">94%</span>
+<div class="w-16 bg-ink h-1.5 rounded-full overflow-hidden">
+<div class="bg-risk-low h-full" style="width: 94%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="bg-teal-core/20 text-teal-core border border-teal-core/40 px-2.5 py-1 rounded font-mono text-[10px]">
+                      Inspect
+                    </button>
+</td>
+</tr>
+<!-- ROW 3: SELECTED STATE WITH TEAL BOUNDARY ACCENT & 84 HIGH RISK -->
+<tr class="bg-ink-card border-l-4 border-l-teal-core shadow-[inset_0_0_16px_rgba(45,212,191,0.12)]">
+<td class="py-3.5 px-4 font-mono text-[11px]">
+<span class="bg-teal-core/10 text-teal-core px-1.5 py-0.5 rounded border border-teal-core/40 font-bold">MH-RD-2022-14</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-white flex items-center gap-2">
+                      NH-44 Expressway Widening Nagpur South
+                      <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-risk-high/15 text-risk-high border border-risk-high/30">
+                        Selected Row
+                      </span>
+</div>
+<div class="text-[10px] text-text-secondary">Maharashtra • Solatium Valuation Review Required</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-teal-core/10 text-teal-core font-mono text-[10px]">Highways</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-mono text-[11px] text-risk-high font-bold">Sec 23 Collector Hearing</span>
+</td>
+<!-- Mini Gauge (84 High) -->
+<td class="py-3.5 px-3 text-center">
+<div class="inline-flex items-center gap-1.5 font-mono">
+<svg class="w-5 h-5 -rotate-90" viewBox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="rgba(255,255,255,0.1)" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#F97316" stroke-dasharray="88" stroke-dashoffset="14" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="font-bold text-risk-high">84</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-[11px] text-risk-high font-bold">42%</span>
+<div class="w-16 bg-ink h-1.5 rounded-full overflow-hidden">
+<div class="bg-risk-high h-full" style="width: 42%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="bg-teal-core text-ink font-bold px-3 py-1 rounded font-mono text-[10px] shadow-[0_0_8px_rgba(45,212,191,0.4)]">
+                      CALA Dossier
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- ================= SECTION 9: STATUTORY DO / DON'T STRIP (12 cols) ================= -->
+<section class="lg:col-span-12 bg-ink-card rounded-2xl p-6 border border-border-subtle">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-teal-core bg-teal-core/10 px-2 py-0.5 rounded font-bold">09</span>
+<h2 class="font-heading text-lg font-bold text-white tracking-wide">Statutory Governance: Do / Don't Mandates</h2>
+</div>
+<span class="font-mono text-[10px] text-text-secondary uppercase">Compliance Checklist for Developers</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- DO Mandates -->
+<div class="bg-ink p-4 rounded-xl border border-risk-low/20 space-y-3">
+<div class="flex items-center gap-2 text-risk-low font-heading font-bold text-sm">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span class="">MANDATORY SYSTEM DIRECTIVES (DO)</span>
+</div>
+<ul class="space-y-2 text-xs text-text-secondary">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-risk-low text-sm shrink-0 mt-0.5">done</span>
+<span class=""><strong>One accent moment per card:</strong> Reserve Electric Teal (#2DD4BF) exclusively for primary sovereign calls-to-action or active state selection bars.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-risk-low text-sm shrink-0 mt-0.5">done</span>
+<span class=""><strong>Dual-encoded risk vectors:</strong> Always pair statutory risk colors with both a text label and an unambiguous icon glyph (WCAG AAA requirement).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-risk-low text-sm shrink-0 mt-0.5">done</span>
+<span class=""><strong>Strict monospace formatting:</strong> Render all parcel IDs, Act sections, SHAP weights, coordinates, and Rupee figures in JetBrains Mono.</span>
+</li>
+</ul>
+</div>
+<!-- DON'T Mandates -->
+<div class="bg-ink p-4 rounded-xl border border-risk-critical/20 space-y-3">
+<div class="flex items-center gap-2 text-risk-critical font-heading font-bold text-sm">
+<span class="material-symbols-outlined text-base">cancel</span>
+<span class="">PROHIBITED ANTI-PATTERNS (DON'T)</span>
+</div>
+<ul class="space-y-2 text-xs text-text-secondary">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-risk-critical text-sm shrink-0 mt-0.5">close</span>
+<span class=""><strong>No isolated color indicators:</strong> Never use color alone without textual accompaniment to signal RFCTLARR Section 25 statutory lapse risk.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-risk-critical text-sm shrink-0 mt-0.5">close</span>
+<span class=""><strong>No generic SaaS aesthetics:</strong> Absolutely no purple/indigo gradient blobs, floating marketing heroes, or playful rounded toy button styles.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-risk-critical text-sm shrink-0 mt-0.5">close</span>
+<span class=""><strong>No lorem ipsum filler:</strong> Never display dummy text; every placeholder must reference authentic RFCTLARR 2013 legal sections and cadastral terms.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- ================= END 12-COLUMN GRID ================= -->
+<!-- Bottom Frame Coordinate Bar -->
+<div class="w-full h-1.5 survey-tick-h opacity-40 mt-8 mb-3"></div>
+<div class="flex flex-wrap items-center justify-between text-[10px] font-mono text-text-secondary/70 pt-1">
+<span class="">NATIONAL INFORMATICS CENTRE • DEPARTMENT OF LAND RESOURCES (DoLR)</span>
+<span class="">GRID ACCURACY ±0.005mm • RFCTLARR STATUTORY COMPLIANCE SEAL v1.4</span>
+</div>
+</div>
+</div>
+
+
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 px-4 py-2 rounded-full bg-[#010f1f]/95 backdrop-blur-xl border border-[#2dd4bf]/40 shadow-2xl"><a href="#" class="inline-flex items-center gap-1 text-[#8B95A8] hover:text-white text-xs font-mono transition-colors"><span class="material-symbols-outlined text-[16px]">arrow_back</span><span class="">Back (Step 7)</span></a><span class="h-4 w-px bg-white/20"></span><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse"></span><span class="font-mono text-xs text-[#2dd4bf] uppercase tracking-wider font-semibold">Step 8 of 8: Design System &amp; Cartographic Legend</span></div><span class="h-4 w-px bg-white/20"></span><a href="#" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2dd4bf] text-[#070B14] text-xs font-mono font-bold hover:bg-[#57f1db] transition-all shadow-sm"><span class="">Restart Flow (Step 1)</span><span class="material-symbols-outlined text-[14px]">replay</span></a></div></body></html>

@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Noto+Sans:wght@400;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary-fixed": "#2a1700",
+          "surface": "#051424",
+          "error-container": "#93000a",
+          "inverse-primary": "#006b5f",
+          "primary-container": "#2dd4bf",
+          "on-primary": "#003731",
+          "on-surface-variant": "#bacac5",
+          "secondary-fixed-dim": "#7bd0ff",
+          "on-primary-container": "#00574d",
+          "on-surface": "#d4e4fa",
+          "on-error-container": "#ffdad6",
+          "outline": "#859490",
+          "on-tertiary-fixed-variant": "#653e00",
+          "on-secondary-fixed": "#001e2c",
+          "secondary-container": "#00a6e0",
+          "on-background": "#d4e4fa",
+          "error": "#ffb4ab",
+          "surface-tint": "#3cddc7",
+          "surface-container-lowest": "#010f1f",
+          "primary": "#57f1db",
+          "inverse-surface": "#d4e4fa",
+          "surface-bright": "#2c3a4c",
+          "surface-dim": "#051424",
+          "tertiary": "#ffd29f",
+          "surface-container-low": "#0d1c2d",
+          "on-primary-fixed": "#00201c",
+          "on-secondary-fixed-variant": "#004c69",
+          "on-secondary-container": "#00374d",
+          "surface-container-high": "#1c2b3c",
+          "on-primary-fixed-variant": "#005047",
+          "on-tertiary-container": "#6d4400",
+          "outline-variant": "#3c4a46",
+          "primary-fixed-dim": "#3cddc7",
+          "on-error": "#690005",
+          "secondary": "#7bd0ff",
+          "surface-container": "#122131",
+          "inverse-on-surface": "#233143",
+          "surface-variant": "#273647",
+          "background": "#051424",
+          "primary-fixed": "#62fae3",
+          "tertiary-container": "#ffad3a",
+          "secondary-fixed": "#c4e7ff",
+          "surface-container-highest": "#273647",
+          "tertiary-fixed-dim": "#ffb95f",
+          "on-secondary": "#00354a",
+          "on-tertiary": "#472a00",
+          "tertiary-fixed": "#ffddb8"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "gutter": "1rem",
+          "space-lg": "1.25rem",
+          "space-md": "0.75rem",
+          "space-xs": "0.25rem",
+          "margin": "1rem",
+          "space-sm": "0.5rem",
+          "gutter-lg": "1.5rem",
+          "margin-md": "1.5rem",
+          "margin-lg": "2rem",
+          "space-xl": "2rem"
+        },
+        "fontFamily": {
+          "telemetry-lg": [
+            "JetBrains Mono"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "headline-xl-mobile": [
+            "Space Grotesk"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "headline-lg-mobile": [
+            "Space Grotesk"
+          ],
+          "telemetry-sm": [
+            "JetBrains Mono"
+          ],
+          "telemetry-md": [
+            "JetBrains Mono"
+          ],
+          "label-caps": [
+            "JetBrains Mono"
+          ],
+          "devanagari-body": [
+            "Noto Sans"
+          ],
+          "headline-xl": [
+            "Space Grotesk"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "devanagari-heading": [
+            "Noto Sans"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "body-sm": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "telemetry-lg": [
+            "28px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.04em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-xl-mobile": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "0em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "telemetry-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "500"
+            }
+          ],
+          "telemetry-md": [
+            "16px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-caps": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "600"
+            }
+          ],
+          "devanagari-body": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-xl": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "devanagari-heading": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "0em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.5)]"><div class="h-16 w-full px-gutter-lg flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><img alt="BhoomiDrishti Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WnAC9pTyXjbx3OefZtF2IgjfgqYQSJRiIKhPG46ktU_FRHpXeUZ-inzU7A9wQc9cJfTMPXw8nB5YUjtqupQnBRb5xxYi3VATGJlHvsrO_zag0Ipa-dh6pJDaceCw1lhJDVkOds8H9m1E3KRrBbSLV-YDVtFSFDMbEjzs_iml2c3-urqiI7w_EzA73xgLNbiBaOIDM6kMauukztDxiLK0Uvb6kTMRygbj-T5YG1rYOqxILlHHcvsLak-84"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">BhoomiDrishti</span><span class="font-devanagari-heading text-devanagari-heading text-primary leading-none ml-1">भूमिदृष्टि</span></div><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">DoLR • RFCTLARR Decision Core</span></div></div><div class="hidden xl:flex items-center flex-1 max-w-xl mx-space-md"><div class="w-full flex items-center bg-surface-container-low px-space-md py-space-xs rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.2)]"><span class="material-symbols-outlined text-outline text-body-lg mr-space-sm">search</span><span class="font-body-sm text-body-sm text-outline flex-1">Search projects, CALA districts, gazette notifications...</span><span class="font-telemetry-sm text-telemetry-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">⌘K</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-md py-1 rounded bg-surface-container-low"><div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div><span class="font-telemetry-sm text-telemetry-sm text-primary">XGBoost v1.3</span><span class="font-telemetry-sm text-telemetry-sm text-outline">|</span><span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant">Sync: Active</span></div><div class="relative flex items-center bg-surface-container px-space-md py-1.5 rounded-full cursor-pointer hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-secondary text-body-md mr-1.5">shield_person</span><span class="font-label-caps text-label-caps text-on-surface mr-1">District Officer (CALA)</span><span class="material-symbols-outlined text-on-surface-variant text-body-sm">arrow_drop_down</span></div><div class="relative p-1.5 rounded bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface cursor-pointer"><span class="material-symbols-outlined text-body-lg">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span></div><div class="flex items-center gap-space-xs pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_0_8px_rgba(87,241,219,0.2)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFCmcFPaivcRKaMFTYXpd6i-kuU3wn11l88H3mQ5K2IZpl7XQrTpyt_guY9O0xfVVpfKK-bdz83bAc-WRuMD7mhI5RnCjizjBpS4pAMwLldTomMrfUwFYzfRLqrL76xHzCLFmPgOt0TMPhfCu80ufM7OAVH9S9w5h0aSDMs06mryvwD6NhI_0-l0Bw0tZ2ydjo04wICblPg67hFGSu9FkfkWmIYZnZjLw6oyO2vkB6nmjK_yjPFMQU"/><div class="hidden 2xl:flex flex-col"><span class="font-telemetry-sm text-telemetry-sm text-on-surface leading-none">IAS Collector</span><span class="font-label-caps text-label-caps text-outline leading-tight">DL-HQ/09</span></div></div></div></div><div class="w-full h-[2px] flex"><div class="h-full flex-1 bg-[#FF9933]"></div><div class="h-full flex-1 bg-[#FFFFFF]"></div><div class="h-full flex-1 bg-[#138808]"></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest/95 backdrop-blur-xl z-40 flex flex-col justify-between py-space-md shadow-[1px_0_12px_rgba(0,0,0,0.4)]"><div class="flex flex-col gap-space-md"><div class="px-gutter-lg pt-space-xs pb-space-xs"><span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Operational Modules</span></div><nav class="flex flex-col gap-1 px-space-md" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm shadow-[0_0_16px_rgba(45,212,191,0.25)]"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg transition-all bg-primary-container text-on-primary-container font-headline-sm shadow-[0_0_16px_rgba(45,212,191,0.25)]" data-path="overview-telemetry" href="#"><span class="material-symbols-outlined text-body-lg">dashboard</span><span class="font-body-md text-body-md">Overview &amp; Telemetry</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rfctlarr-pipeline" href="#"><span class="material-symbols-outlined text-body-lg">account_tree</span><span class="font-body-md text-body-md">RFCTLARR Pipeline</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="predictive-delay-hotspots" href="#"><span class="material-symbols-outlined text-body-lg">satellite_alt</span><span class="font-body-md text-body-md">Predictive Hotspots</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="cala-district-casework" href="#"><span class="material-symbols-outlined text-body-lg">gavel</span><span class="font-body-md text-body-md">CALA District Casework</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rr-compensation-ledger" href="#"><span class="material-symbols-outlined text-body-lg">payments</span><span class="font-body-md text-body-md">R&amp;R Compensation</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="model-intelligence-telemetry" href="#"><span class="material-symbols-outlined text-body-lg">insights</span><span class="font-body-md text-body-md">Model Intelligence</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-settings-compliance" href="#"><span class="material-symbols-outlined text-body-lg">verified_user</span><span class="font-body-md text-body-md">Settings &amp; Compliance</span></a></nav></div><div class="px-gutter-lg pb-space-xs"><div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-outline">STATUTORY CLOCK</span><span class="material-symbols-outlined text-tertiary text-body-sm">schedule</span></div><span class="font-telemetry-sm text-telemetry-sm text-tertiary font-bold">SEC-25 LAPSE RISK: 48D</span><span class="font-body-sm text-body-sm text-on-surface-variant">District Sonipat / Plot 104-A</span></div></div></aside><div class="pl-64"><main class="relative pt-16 w-full min-h-screen bg-background bg-[radial-gradient(#122131_1px,transparent_1px)] [background-size:24px_24px] px-gutter-lg py-gutter-lg"><div class="flex flex-col w-full">
+<!-- Top Sovereign Horizon & Document Header -->
+<section class="relative w-full rounded-2xl bg-surface-container-lowest p-gutter-lg shadow-xl overflow-hidden mb-space-xl">
+<!-- Ambient Backdrop Radar Flare -->
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent blur-3xl pointer-events-none"></div>
+<div class="absolute left-1/3 -bottom-24 w-80 h-80 rounded-full bg-tertiary/5 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-lg">
+<!-- Breadcrumb & Governance Identity Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-wider">DoLR Spec Standard 01-B</span>
+<span class="text-outline text-telemetry-sm">•</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">RFCTLARR 2013 Statutory Engine</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-devanagari-body text-devanagari-body text-outline font-semibold">भूमि संसाधन विभाग</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">|</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Government of India</span>
+</div>
+</div>
+<!-- Main Title Block -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="max-w-4xl flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-baseline gap-space-md">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+              BhoomiDrishti
+            </h1>
+<span class="font-devanagari-heading text-devanagari-heading text-primary">
+              भूमिदृष्टि डिजाइन विधान
+            </span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            System Guidelines &amp; Component Specifications for RFCTLARR Act 2013 Predictive Delay Intelligence Engine. Standardized token architecture, telemetry primitives, and statutory compliance controls powered by XGBoost v1.3.
+          </p>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest bg-surface-container px-space-sm py-1 rounded">Motto</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight italic">
+              "See delays before they happen."
+            </span>
+</div>
+</div>
+<!-- Quick Telemetry Stamp -->
+<div class="bg-surface-container-high/90 backdrop-blur-md px-space-lg py-space-md rounded-xl shadow-md flex flex-col gap-1 min-w-[240px]">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps">CORE BUILD</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary">STABLE v1.3</span>
+</div>
+<div class="font-telemetry-md text-telemetry-md text-on-surface">SHA-256: 8b0f4...c9a1</div>
+<div class="text-body-sm text-on-surface-variant font-body-sm">Calibrated: NIC-DoLR Cloud HQ</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 1: Brand Identity, Glyph Matrix & Sovereign Ribbon -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">01</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Brand Identity &amp; Sovereign Motif</h2>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Vector Geometry &amp; Spatial Clearance</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg">
+<!-- Logo Specimen Card -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-2xl p-gutter-lg shadow-lg flex flex-col justify-between gap-space-lg relative overflow-hidden">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-outline">CONTOUR EYE EMBLEM &amp; WORDMARK</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Represents multi-tier cadastral land survey lines mapped into a synthetic predictive pupil, looking ahead to identify statutory lapse horizons.
+          </p>
+</div>
+<!-- Rendered Scalable Logo Motif Box -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-xl flex flex-col md:flex-row items-center justify-around gap-space-lg">
+<!-- Synthetic SVG Glyph -->
+<div class="relative flex items-center justify-center">
+<svg class="w-28 h-28 text-primary" fill="none" viewbox="0 0 120 120">
+<!-- Contour Ring Outer -->
+<ellipse cx="60" cy="60" rx="54" ry="32" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.3" stroke-width="1.5"></ellipse>
+<!-- Contour Ring Mid -->
+<ellipse cx="60" cy="60" rx="42" ry="24" stroke="currentColor" stroke-opacity="0.6" stroke-width="2"></ellipse>
+<!-- Contour Ring Inner Eye -->
+<ellipse cx="60" cy="60" rx="28" ry="16" stroke="currentColor" stroke-width="2"></ellipse>
+<!-- Predictive Iris Pupil -->
+<circle cx="60" cy="60" fill="#57f1db" r="8"></circle>
+<circle cx="60" cy="60" r="14" stroke="#ffb4ab" stroke-dasharray="2 3" stroke-opacity="0.6" stroke-width="1.5"></circle>
+<circle cx="60" cy="60" fill="#010f1f" r="3"></circle>
+<!-- Cadastral Crosshairs -->
+<line stroke="currentColor" stroke-width="1.5" x1="60" x2="60" y1="12" y2="28"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="60" x2="60" y1="92" y2="108"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="8" x2="24" y1="60" y2="60"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="96" x2="112" y1="60" y2="60"></line>
+</svg>
+<div class="absolute -bottom-2 font-telemetry-sm text-telemetry-sm text-outline">CAD-01</div>
+</div>
+<div class="flex flex-col gap-1 text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">BhoomiDrishti</span>
+</div>
+<span class="font-devanagari-heading text-devanagari-heading text-primary font-bold">भूमिदृष्टि</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-1">
+              DoLR Decision Core • RFCTLARR 2013
+            </span>
+</div>
+</div>
+<!-- Sovereign Ribbon Specimen -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-body-sm text-outline">
+<span class="font-label-caps text-label-caps uppercase">Tri-Color Sovereign Alignment Stripe</span>
+<span class="font-telemetry-sm text-telemetry-sm">H: 3px • Ratio 1:1:1</span>
+</div>
+<div class="w-full h-[3px] flex rounded-full overflow-hidden shadow-sm">
+<div class="h-full flex-1 bg-[#FF9933]"></div>
+<div class="h-full flex-1 bg-[#FFFFFF]"></div>
+<div class="h-full flex-1 bg-[#138808]"></div>
+</div>
+</div>
+</div>
+<!-- Clearspace, Sizing & Rules -->
+<div class="lg:col-span-5 flex flex-col gap-gutter-lg">
+<div class="bg-surface-container-low rounded-2xl p-gutter-lg shadow-lg flex flex-col gap-space-md">
+<span class="font-label-caps text-label-caps text-outline">CLEARSPACE &amp; MINIMUM DENSITY</span>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-1">
+<span class="font-telemetry-md text-telemetry-md text-secondary">X = 0.5H</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Minimum boundary clearspace around emblem equals half of eye glyph diameter.</span>
+</div>
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-1">
+<span class="font-telemetry-md text-telemetry-md text-primary">MIN: 32px</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Emblem legibility cutoff for micro command headers and high-density GIS toolbars.</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-outline pt-space-xs">BRAND GOVERNANCE RULES</span>
+<div class="space-y-space-xs">
+<div class="flex items-start gap-space-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-body-md shrink-0">check_circle</span>
+<span>Always preserve bilingual English-Devanagari pairing on official gazette outputs and CALA decision receipts.</span>
+</div>
+<div class="flex items-start gap-space-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-error text-body-md shrink-0">cancel</span>
+<span>Never alter contour line stroke ratios or replace Sovereign Ribbon colors with arbitrary brand tints.</span>
+</div>
+</div>
+</div>
+<!-- Field Rugged Satellite View Concept -->
+<div class="relative bg-surface-container-high rounded-2xl p-space-lg shadow-lg overflow-hidden flex items-center justify-between">
+<div class="z-10 flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">NIC / BHOOMI CONNECTIVITY</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Real-Time RoR Gateway</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Direct handshake with State Bhulekh DBs</span>
+</div>
+<div class="z-10 bg-primary-container/20 text-primary px-space-md py-1.5 rounded-full font-telemetry-sm text-telemetry-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> TLS 1.3
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Color Hierarchy & 4-Tier Risk Taxonomy -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">02</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Chromatic Hierarchy &amp; Delay Taxonomy</h2>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Accessible Contrast Compliant (WCAG AAA)</span>
+</div>
+<!-- Base UI Tokens Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-md flex flex-col justify-between h-28">
+<div>
+<span class="font-label-caps text-label-caps text-outline">DEEP INK CANVAS</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Surface-0</div>
+</div>
+<div class="flex items-center justify-between text-telemetry-sm text-on-surface-variant font-telemetry-sm">
+<span>#010F1F</span>
+<span>Lowest</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-md flex flex-col justify-between h-28">
+<div>
+<span class="font-label-caps text-label-caps text-outline">STRUCTURAL CARD</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Surface-1</div>
+</div>
+<div class="flex items-center justify-between text-telemetry-sm text-on-surface-variant font-telemetry-sm">
+<span>#0D1C2D</span>
+<span>Base Low</span>
+</div>
+</div>
+<div class="bg-surface-container-high p-space-md rounded-xl shadow-md flex flex-col justify-between h-28">
+<div>
+<span class="font-label-caps text-label-caps text-outline">RADAR OVERLAY</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Surface High</div>
+</div>
+<div class="flex items-center justify-between text-telemetry-sm text-on-surface-variant font-telemetry-sm">
+<span>#1C2B3C</span>
+<span>Floating</span>
+</div>
+</div>
+<div class="bg-primary-container p-space-md rounded-xl shadow-[0_0_24px_rgba(45,212,191,0.2)] flex flex-col justify-between h-28 text-on-primary-container">
+<div>
+<span class="font-label-caps text-label-caps opacity-80">BRAND CORE</span>
+<div class="font-headline-sm text-headline-sm font-bold">Electric Teal</div>
+</div>
+<div class="flex items-center justify-between text-telemetry-sm font-telemetry-sm font-bold">
+<span>#2DD4BF</span>
+<span>Primary</span>
+</div>
+</div>
+</div>
+<!-- 4 Statutory Risk Vectors (Strictly Accessible with dual encoding) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter-lg mt-space-sm">
+<!-- Low Risk Card -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-lg flex flex-col justify-between gap-space-lg relative overflow-hidden group hover:scale-[1.01] transition-transform">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-fixed text-headline-md" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">Score 00–39</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Low Delay Risk</span>
+</div>
+</div>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded font-telemetry-sm text-telemetry-sm">STAGE OK</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-devanagari-body text-devanagari-body text-on-surface-variant">सामान्य अनुसूची / न्यूनतम विवाद</span>
+<p class="font-body-sm text-body-sm text-outline">
+            SIA complete, Gram Sabha consent above 80%, clean title claims without high-court injunctions.
+          </p>
+</div>
+<div class="bg-surface-container px-space-md py-space-xs rounded-lg flex items-center justify-between text-telemetry-sm font-telemetry-sm text-on-surface">
+<span>HEX: #34D399</span>
+<span class="text-primary-fixed">P(lapse) &lt; 0.15</span>
+</div>
+</div>
+<!-- Medium Risk Card -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-lg flex flex-col justify-between gap-space-lg relative overflow-hidden group hover:scale-[1.01] transition-transform">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary text-headline-md" style="font-variation-settings: 'FILL' 1;">error</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">Score 40–69</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Watchlist</span>
+</div>
+</div>
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded font-telemetry-sm text-telemetry-sm">MONITOR</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-devanagari-body text-devanagari-body text-on-surface-variant">निगरानी सूची / मध्यम विसंगति</span>
+<p class="font-body-sm text-body-sm text-outline">
+            Circle rate revision queries, minor joint heirship verification pending at CALA tehsildar level.
+          </p>
+</div>
+<div class="bg-surface-container px-space-md py-space-xs rounded-lg flex items-center justify-between text-telemetry-sm font-telemetry-sm text-on-surface">
+<span>HEX: #FBBF24</span>
+<span class="text-tertiary">P(lapse) ~ 0.42</span>
+</div>
+</div>
+<!-- High Risk Card -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-lg flex flex-col justify-between gap-space-lg relative overflow-hidden group hover:scale-[1.01] transition-transform">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary-container text-headline-md" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-tertiary-container uppercase tracking-wider">Score 70–84</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Escalated Delay</span>
+</div>
+</div>
+<span class="bg-tertiary-container/10 text-tertiary-container px-2 py-0.5 rounded font-telemetry-sm text-telemetry-sm">ALERT</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-devanagari-body text-devanagari-body text-on-surface-variant">विलंब खतरा / एसआईए लंबित</span>
+<p class="font-body-sm text-body-sm text-outline">
+            Sec 11 notification approaching 12-month boundary without Sec 19 draft publication. State level intervention required.
+          </p>
+</div>
+<div class="bg-surface-container px-space-md py-space-xs rounded-lg flex items-center justify-between text-telemetry-sm font-telemetry-sm text-on-surface">
+<span>HEX: #F97316</span>
+<span class="text-tertiary-container">P(lapse) &gt; 0.68</span>
+</div>
+</div>
+<!-- Critical Risk Card -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-lg flex flex-col justify-between gap-space-lg relative overflow-hidden group hover:scale-[1.01] transition-transform shadow-[0_0_24px_rgba(239,68,68,0.15)]">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-error text-headline-md" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-error uppercase tracking-wider">Score 85–100</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Statutory Lapse Risk</span>
+</div>
+</div>
+<span class="bg-error/15 text-error px-2 py-0.5 rounded font-telemetry-sm text-telemetry-sm animate-pulse">SEC-25 HAZARD</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-devanagari-body text-devanagari-body text-on-surface-variant">गंभीर संकट / अधिनियम निरस्तीकरण</span>
+<p class="font-body-sm text-body-sm text-outline">
+            High Court writ petition stay on compensation, award delay exceeding 12-month limit under RFCTLARR Sec 25.
+          </p>
+</div>
+<div class="bg-surface-container px-space-md py-space-xs rounded-lg flex items-center justify-between text-telemetry-sm font-telemetry-sm text-on-surface">
+<span>HEX: #EF4444</span>
+<span class="text-error">P(lapse) &gt; 0.88</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Typography System Specimen -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">03</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Quad-Type Typography System</h2>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Institutional Rigor Meets Monospaced Exactitude</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-lg">
+<!-- Space Grotesk Specimen -->
+<div class="bg-surface-container-low p-gutter-lg rounded-2xl shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps">DISPLAY HEADINGS &amp; STATUTORY MILESTONES</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary">Space Grotesk</span>
+</div>
+<div class="space-y-space-sm">
+<div>
+<div class="font-label-caps text-label-caps text-outline">headline-xl (40px / 700)</div>
+<div class="font-headline-xl text-headline-xl text-on-surface">Section 19 Declaration</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline">headline-lg (32px / 600)</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">Special Land Acquisition Officer</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline">headline-md (22px / 600)</div>
+<div class="font-headline-md text-headline-md text-on-surface">Solatium Determination @ 100% Market Value</div>
+</div>
+</div>
+</div>
+<!-- JetBrains Mono Specimen -->
+<div class="bg-surface-container-low p-gutter-lg rounded-2xl shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps">TELEMETRY, ACT SECTIONS &amp; CURRENCY</span>
+<span class="font-telemetry-sm text-telemetry-sm text-secondary">JetBrains Mono</span>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between bg-surface-container p-space-sm rounded-lg">
+<span class="font-label-caps text-label-caps text-outline">TELEMETRY LG</span>
+<span class="font-telemetry-lg text-telemetry-lg text-primary">₹ 4,821.40 Cr</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container p-space-sm rounded-lg">
+<span class="font-label-caps text-label-caps text-outline">ACT CLAUSE STRING</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface">RFCTLARR-ACT-2013:SEC-11(1)</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container p-space-sm rounded-lg">
+<span class="font-label-caps text-label-caps text-outline">METRIC SCORE</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary">AUC: 0.892 | RECALL: 0.824</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container p-space-sm rounded-lg">
+<span class="font-label-caps text-label-caps text-outline">MICRO TOKEN</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PARCEL-ID: MH-NGP-UMR-0419-A</span>
+</div>
+</div>
+</div>
+<!-- Inter Specimen -->
+<div class="bg-surface-container-low p-gutter-lg rounded-2xl shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps">OPERATIONAL BODY &amp; MICRO-COPY</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface">Inter</span>
+</div>
+<div class="space-y-space-sm">
+<div>
+<div class="font-label-caps text-label-caps text-outline">body-lg (16px / 400)</div>
+<p class="font-body-lg text-body-lg text-on-surface">
+              The appropriate Government shall ensure that the Social Impact Assessment study is completed within a statutory timeframe of six months from commencement.
+            </p>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline">body-md (14px / 400)</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              CALA inquiry hearings require public notice publication in at least two daily newspapers circulating in the affected locality.
+            </p>
+</div>
+</div>
+</div>
+<!-- Noto Sans Devanagari Specimen -->
+<div class="bg-surface-container-low p-gutter-lg rounded-2xl shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps">DEVANAGARI STATUTORY LABELS (HINDI)</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary">Noto Sans Devanagari</span>
+</div>
+<div class="space-y-space-sm">
+<div>
+<div class="font-label-caps text-label-caps text-outline">devanagari-heading (20px / 600)</div>
+<div class="font-devanagari-heading text-devanagari-heading text-on-surface">
+              उचित प्रतिकर एवं पारदर्शी भूमि अधिग्रहण अधिकार
+            </div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline">devanagari-body (14px / 400)</div>
+<p class="font-devanagari-body text-devanagari-body text-on-surface-variant">
+              पुनर्वासन और पुनर्व्यवस्थापन योजना का प्रारूप संबंधित ग्राम सभा और प्रभावित परिवारों के अवलोकन हेतु तहसील कार्यालय में उपलब्ध कराया गया है।
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Signature Component Gallery (Interactive Gauges, Bars, Glass Cards & Controls) -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">04</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Signature Component Specimens</h2>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Mission-Critical Telemetry Widgets</span>
+</div>
+<!-- (1) Circular Telemetry Risk Gauges (SVG 0-100 Gauges) -->
+<div class="bg-surface-container-low rounded-2xl p-gutter-lg shadow-lg flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">TELEMETRY COMPONENT SPEC-01</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Dual-Ring Circular Delay Score Gauges</h3>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant bg-surface-container px-space-md py-1 rounded">
+          Dynamic Stroke Calculation: C = 2πr
+        </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-lg">
+<!-- Gauge 1: Krishna Canal (Critical 91) -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col items-center text-center gap-space-md relative overflow-hidden group">
+<div class="relative w-36 h-36 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<circle class="text-surface-variant" cx="60" cy="60" fill="none" r="48" stroke="currentColor" stroke-width="4"></circle>
+<!-- Arc calculation: perimeter ~301.6, offset = 301.6 * (1 - 0.91) ~ 27.1 -->
+<circle class="transition-all duration-1000" cx="60" cy="60" fill="none" r="48" stroke="#ef4444" stroke-dasharray="301.6" stroke-dashoffset="27.1" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-telemetry-lg text-telemetry-lg text-error">91</span>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">DELAY INDEX</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Krishna Canal Ext.</span>
+<span class="font-label-caps text-label-caps text-error bg-error/15 px-2 py-0.5 rounded-full inline-block mx-auto">
+              CRITICAL LAPSE (P: 0.92)
+            </span>
+<span class="text-body-sm text-outline mt-1 font-telemetry-sm">AP-IRR-2021-08</span>
+</div>
+</div>
+<!-- Gauge 2: NH-44 Widening (High 84) -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col items-center text-center gap-space-md relative overflow-hidden group">
+<div class="relative w-36 h-36 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<circle class="text-surface-variant" cx="60" cy="60" fill="none" r="48" stroke="currentColor" stroke-width="4"></circle>
+<!-- offset = 301.6 * (1 - 0.84) ~ 48.2 -->
+<circle class="transition-all duration-1000" cx="60" cy="60" fill="none" r="48" stroke="#f97316" stroke-dasharray="301.6" stroke-dashoffset="48.2" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-telemetry-lg text-telemetry-lg text-tertiary-container">84</span>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">DELAY INDEX</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">NH-44 Widening, NGP</span>
+<span class="font-label-caps text-label-caps text-tertiary-container bg-tertiary-container/15 px-2 py-0.5 rounded-full inline-block mx-auto">
+              HIGH CONTROVERSY (P: 0.81)
+            </span>
+<span class="text-body-sm text-outline mt-1 font-telemetry-sm">MH-RD-2022-14</span>
+</div>
+</div>
+<!-- Gauge 3: Vadodara-Mumbai Rail (Medium 67) -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col items-center text-center gap-space-md relative overflow-hidden group">
+<div class="relative w-36 h-36 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<circle class="text-surface-variant" cx="60" cy="60" fill="none" r="48" stroke="currentColor" stroke-width="4"></circle>
+<!-- offset = 301.6 * (1 - 0.67) ~ 99.5 -->
+<circle class="transition-all duration-1000" cx="60" cy="60" fill="none" r="48" stroke="#ffad3a" stroke-dasharray="301.6" stroke-dashoffset="99.5" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-telemetry-lg text-telemetry-lg text-tertiary">67</span>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">DELAY INDEX</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Vadodara-Mumbai Rail</span>
+<span class="font-label-caps text-label-caps text-tertiary bg-tertiary/15 px-2 py-0.5 rounded-full inline-block mx-auto">
+              WATCHLIST (P: 0.58)
+            </span>
+<span class="text-body-sm text-outline mt-1 font-telemetry-sm">GJ-RL-2023-03</span>
+</div>
+</div>
+<!-- Gauge 4: 220kV Line Bhilwara (Low 32) -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col items-center text-center gap-space-md relative overflow-hidden group">
+<div class="relative w-36 h-36 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<circle class="text-surface-variant" cx="60" cy="60" fill="none" r="48" stroke="currentColor" stroke-width="4"></circle>
+<!-- offset = 301.6 * (1 - 0.32) ~ 205.1 -->
+<circle class="transition-all duration-1000" cx="60" cy="60" fill="none" r="48" stroke="#34d399" stroke-dasharray="301.6" stroke-dashoffset="205.1" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-telemetry-lg text-telemetry-lg text-primary">32</span>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">DELAY INDEX</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">220kV Line, Bhilwara</span>
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-0.5 rounded-full inline-block mx-auto">
+              NORMAL FLOW (P: 0.12)
+            </span>
+<span class="text-body-sm text-outline mt-1 font-telemetry-sm">RJ-PW-2024-91</span>
+</div>
+</div>
+</div>
+</div>
+<!-- (2) Statutory Milestone Velocity Risk Bars -->
+<div class="bg-surface-container-low rounded-2xl p-gutter-lg shadow-lg flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">TELEMETRY COMPONENT SPEC-02</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Statutory Clock Milestone Progression Bars</h3>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary bg-surface-container px-space-md py-1 rounded">
+          RFCTLARR MANDATORY TIME LIMITS
+        </span>
+</div>
+<div class="space-y-space-lg">
+<!-- Milestone 1: Section 19 Expiry Hazard (Krishna Canal) -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-error text-body-lg">warning</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Section 19 Declaration Window</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant">• AP Krishna Canal Tract #4</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">11.2 / 12.0 Months Elapsed</span>
+<span class="font-label-caps text-label-caps text-error bg-error/20 px-2 py-0.5 rounded">24 DAYS TO STATUTORY LAPSE</span>
+</div>
+</div>
+<!-- Bar Track -->
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden flex relative">
+<div class="bg-error h-full rounded-full transition-all duration-700" style="width: 93%;"></div>
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-on-error animate-ping"></div>
+</div>
+<div class="flex justify-between text-body-sm text-outline font-telemetry-sm">
+<span>Sec 11(1) Gazette Date: 12 Mar 2023</span>
+<span>Mandatory Lapse Cutoff: 11 Mar 2024</span>
+</div>
+</div>
+<!-- Milestone 2: Section 25 Award Hearing (NH-44 Nagpur) -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary-container text-body-lg">schedule</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Section 25 Collector Award Period</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant">• MH-NH-44 Nagpur South</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary-container font-bold">9.5 / 12.0 Months Elapsed</span>
+<span class="font-label-caps text-label-caps text-tertiary-container bg-tertiary-container/20 px-2 py-0.5 rounded">CALA NOTICE PENDING</span>
+</div>
+</div>
+<!-- Bar Track -->
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden flex">
+<div class="bg-tertiary-container h-full rounded-full transition-all duration-700" style="width: 79%;"></div>
+</div>
+<div class="flex justify-between text-body-sm text-outline font-telemetry-sm">
+<span>Declaration Sec 19: 05 Jun 2023</span>
+<span>Target Final Award: 04 Jun 2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- (3) Card Variants & UI Controls Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg">
+<!-- UI Controls Specimen (Segmented Filters, Buttons, Role Pill) -->
+<div class="lg:col-span-6 bg-surface-container-low rounded-2xl p-gutter-lg shadow-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-outline">INTERACTION PRIMITIVES</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Button Archetypes &amp; Role Switcher</h3>
+</div>
+<!-- Buttons Matrix -->
+<div class="space-y-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Primary Command Teal -->
+<button class="bg-primary text-on-primary font-headline-sm text-headline-sm px-space-lg py-2.5 rounded-lg shadow-[0_0_16px_rgba(45,212,191,0.35)] hover:shadow-[0_0_24px_rgba(45,212,191,0.55)] transition-all flex items-center gap-space-sm active:scale-95">
+<span class="material-symbols-outlined text-body-lg">gavel</span>
+<span>Initiate CALA Inquiry</span>
+</button>
+<!-- Secondary Instrumental -->
+<button class="bg-surface-container-high hover:bg-surface-bright text-on-surface font-body-md text-body-md px-space-lg py-2.5 rounded-lg shadow-sm transition-all flex items-center gap-space-sm active:scale-95">
+<span class="material-symbols-outlined text-secondary text-body-lg">download</span>
+<span>Export SIA Audit</span>
+</button>
+<!-- Ghost/Tertiary Filter -->
+<button class="bg-transparent hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-body-md text-body-md px-space-md py-2.5 rounded-lg transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-body-md">tune</span>
+<span>Filter Projects</span>
+</button>
+</div>
+<!-- Risk Filter Segmented Control -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-caps text-label-caps text-outline">RISK FILTER SEGMENTED BAR</span>
+<div class="flex flex-wrap p-1 bg-surface-container rounded-xl gap-1">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface font-telemetry-sm text-telemetry-sm shadow-sm">
+                All (189)
+              </button>
+<button class="px-space-md py-1.5 rounded-lg text-error hover:bg-surface-container-high font-telemetry-sm text-telemetry-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span> Critical (12)
+              </button>
+<button class="px-space-md py-1.5 rounded-lg text-tertiary-container hover:bg-surface-container-high font-telemetry-sm text-telemetry-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span> High (28)
+              </button>
+<button class="px-space-md py-1.5 rounded-lg text-tertiary hover:bg-surface-container-high font-telemetry-sm text-telemetry-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Medium (45)
+              </button>
+<button class="px-space-md py-1.5 rounded-lg text-primary hover:bg-surface-container-high font-telemetry-sm text-telemetry-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Low (104)
+              </button>
+</div>
+</div>
+<!-- Role Switcher Pill Component -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-caps text-label-caps text-outline">STATUTORY ROLE MATRIX PILL</span>
+<div class="inline-flex bg-surface-container-lowest p-1 rounded-full shadow-inner max-w-fit">
+<button class="bg-primary text-on-primary font-headline-sm text-headline-sm px-space-md py-1 rounded-full text-sm">
+                CALA Officer
+              </button>
+<button class="text-on-surface-variant hover:text-on-surface px-space-md py-1 rounded-full font-body-sm text-body-sm transition-colors">
+                State Policymaker
+              </button>
+<button class="text-on-surface-variant hover:text-on-surface px-space-md py-1 rounded-full font-body-sm text-body-sm transition-colors flex items-center gap-1">
+<span>Admin / ML Core</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Glass-effect Card Archetypes Specimen -->
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<!-- Variant A: Standard Structural Card -->
+<div class="bg-surface-container-low/90 backdrop-blur-md p-space-lg rounded-2xl shadow-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">SURFACE SPEC TIER-1</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Cadastral Standard Card</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Default vessel for parcel records &amp; GIS sub-attributes</span>
+</div>
+<div class="text-right">
+<span class="font-telemetry-lg text-telemetry-lg text-primary">99.4%</span>
+<span class="block font-label-caps text-label-caps text-outline">UPTIME REGISTRY</span>
+</div>
+</div>
+<!-- Variant B: Telemetry Stat Card with Trend Badge -->
+<div class="bg-surface-container-high p-space-lg rounded-2xl shadow-xl flex flex-col justify-between gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline">TELEMETRY PREDICTOR</span>
+<div class="flex items-center gap-1 bg-error/15 text-error px-2 py-0.5 rounded-full font-telemetry-sm text-telemetry-sm">
+<span class="material-symbols-outlined text-body-sm">trending_up</span>
+<span>+14.2% Delay Drift</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between">
+<div>
+<div class="font-telemetry-lg text-telemetry-lg text-on-surface">348 Days</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Estimated Mean Award Duration</span>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-tertiary">NATIONAL BASELINE: 210D</span>
+</div>
+</div>
+</div>
+<!-- Variant C: Alert Card with Risk Accent (Crimson) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-lg flex items-start gap-space-md relative overflow-hidden">
+<div class="w-1.5 h-12 bg-error rounded-full shrink-0"></div>
+<div class="flex flex-col gap-0.5 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-error">STATUTORY WARNING • SEC 24(2)</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">3H AGO</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Compensation Deposit Lapse Triggered</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Award announced over 5 years ago without majority land compensation disbursed into beneficiary accounts.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: RFCTLARR 2013 Full High-Density Table Specimen -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">05</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">RFCTLARR Statutory Pipeline Table</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Active Casework Manifest</span>
+<span class="font-telemetry-sm text-telemetry-sm text-secondary bg-secondary/10 px-2 py-0.5 rounded">4 Projects Loaded</span>
+</div>
+</div>
+<!-- Tabular Canvas -->
+<div class="w-full bg-surface-container-low rounded-2xl shadow-xl overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead>
+<tr class="bg-surface-container-lowest text-outline font-label-caps text-label-caps uppercase tracking-wider">
+<th class="py-space-md px-gutter">Project / Cadastral Route</th>
+<th class="py-space-md px-space-md">Sector</th>
+<th class="py-space-md px-space-md">State &amp; District</th>
+<th class="py-space-md px-space-md">Statutory Stage</th>
+<th class="py-space-md px-space-md">Disbursed %</th>
+<th class="py-space-md px-space-md text-center">Delay Index</th>
+<th class="py-space-md px-gutter">Primary Delay Driver (SHAP)</th>
+<th class="py-space-md px-gutter text-right">Quick Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md">
+<!-- Row 1: NH-44 Widening -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="py-space-md px-gutter">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">NH-44 Widening, Nagpur</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">ID: MH-RD-NGP-2022-14</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">
+                Highways
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Maharashtra</span>
+<span class="font-body-sm text-body-sm text-outline">Nagpur District</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary-container bg-tertiary-container/15 px-2 py-0.5 rounded">
+                Sec 23 Award
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface">64%</span>
+<div class="w-16 bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 64%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-telemetry-md text-telemetry-md font-bold text-tertiary-container bg-tertiary-container/10 px-2 py-1 rounded">
+                84
+              </span>
+</td>
+<td class="py-space-md px-gutter max-w-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                High Solatium Valuation Discrepancy between Urban/Rural factor calculation
+              </span>
+</td>
+<td class="py-space-md px-gutter text-right">
+<button class="bg-surface-container-high hover:bg-surface-bright text-primary px-space-md py-1.5 rounded font-label-caps text-label-caps uppercase tracking-wider transition-all">
+                Audit
+              </button>
+</td>
+</tr>
+<!-- Row 2: Vadodara-Mumbai Rail Link -->
+<tr class="bg-surface-container/40 hover:bg-surface-container transition-colors">
+<td class="py-space-md px-gutter">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Vadodara-Mumbai Rail Link</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">ID: GJ-RL-VAD-2023-03</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">
+                Railways
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Gujarat</span>
+<span class="font-body-sm text-body-sm text-outline">Navsari &amp; Surat</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary bg-tertiary/15 px-2 py-0.5 rounded">
+                Sec 19 Declaration
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface">42%</span>
+<div class="w-16 bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 42%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-telemetry-md text-telemetry-md font-bold text-tertiary bg-tertiary/10 px-2 py-1 rounded">
+                67
+              </span>
+</td>
+<td class="py-space-md px-gutter max-w-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                SIA Gram Sabha Consent Pending in 4 Tribal Panchayats (PESA Act alignment)
+              </span>
+</td>
+<td class="py-space-md px-gutter text-right">
+<button class="bg-surface-container-high hover:bg-surface-bright text-primary px-space-md py-1.5 rounded font-label-caps text-label-caps uppercase tracking-wider transition-all">
+                Audit
+              </button>
+</td>
+</tr>
+<!-- Row 3: Krishna Canal Extension (Critical) -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="py-space-md px-gutter">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-error">Krishna Canal Extension</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">ID: AP-IR-KRI-2021-08</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">
+                Irrigation
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Andhra Pradesh</span>
+<span class="font-body-sm text-body-sm text-outline">Guntur District</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-telemetry-sm text-telemetry-sm text-error bg-error/20 px-2 py-0.5 rounded font-bold">
+                R&amp;R Award (Sec 31)
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">18%</span>
+<div class="w-16 bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full" style="width: 18%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-telemetry-md text-telemetry-md font-bold text-error bg-error/15 px-2 py-1 rounded">
+                91
+              </span>
+</td>
+<td class="py-space-md px-gutter max-w-xs">
+<span class="font-body-sm text-body-sm text-error line-clamp-2">
+                Resettlement Colony Site Injunction by High Court of AP; Sec 25 statutory lapse risk
+              </span>
+</td>
+<td class="py-space-md px-gutter text-right">
+<button class="bg-error text-on-error px-space-md py-1.5 rounded font-headline-sm text-headline-sm tracking-wider shadow-[0_0_12px_rgba(239,68,68,0.4)] transition-all">
+                Intervene
+              </button>
+</td>
+</tr>
+<!-- Row 4: 220kV Transmission Line -->
+<tr class="bg-surface-container/40 hover:bg-surface-container transition-colors">
+<td class="py-space-md px-gutter">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">220kV Transmission Line</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">ID: RJ-PW-BHL-2024-91</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">
+                Power Grid
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Rajasthan</span>
+<span class="font-body-sm text-body-sm text-outline">Bhilwara District</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">
+                Sec 38 Possession
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-sm text-telemetry-sm text-primary font-bold">96%</span>
+<div class="w-16 bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 96%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-telemetry-md text-telemetry-md font-bold text-primary bg-primary/10 px-2 py-1 rounded">
+                32
+              </span>
+</td>
+<td class="py-space-md px-gutter max-w-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                Minor RoW tree felling clearance; compensation payments 98% settled
+              </span>
+</td>
+<td class="py-space-md px-gutter text-right">
+<button class="bg-surface-container-high hover:bg-surface-bright text-primary px-space-md py-1.5 rounded font-label-caps text-label-caps uppercase tracking-wider transition-all">
+                Audit
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- SECTION 6: Model Intelligence, Telemetry & SHAP Weights (XGBoost v1.3) -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-sm text-telemetry-sm text-primary bg-primary/10 px-2 py-0.5 rounded">06</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Predictive Core Telemetry &amp; SHAP Weights</h2>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">XGBoost v1.3 Inference Engine Metrics</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg">
+<!-- Accuracy, Recall & AUC Indicators -->
+<div class="lg:col-span-4 bg-surface-container-low p-gutter-lg rounded-2xl shadow-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-outline">STATUTORY ACCURACY TELEMETRY</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Validation Performance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Trained on 14,280 pan-India land acquisition awards executed under RFCTLARR Act across 28 States.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps text-outline">ROC-AUC SCORE</span>
+<span class="font-telemetry-lg text-telemetry-lg text-primary">0.89</span>
+<span class="text-body-sm text-primary-fixed">Discriminative Power</span>
+</div>
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps text-outline">DELAY RECALL</span>
+<span class="font-telemetry-lg text-telemetry-lg text-secondary">0.82</span>
+<span class="text-body-sm text-secondary-fixed">High Sensitivity</span>
+</div>
+</div>
+<div class="bg-surface-container-high px-space-md py-space-sm rounded-xl flex items-center justify-between text-telemetry-sm font-telemetry-sm text-on-surface-variant">
+<span>False Discovery Rate: 0.11</span>
+<span>Calibrated: Isotonic</span>
+</div>
+</div>
+<!-- Feature Weights Preview (SHAP Value Decomposition) -->
+<div class="lg:col-span-8 bg-surface-container-low p-gutter-lg rounded-2xl shadow-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">EXPLAINABLE AI ARCHITECTURE</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Top Statutory Delay Drivers (Mean |SHAP|)</h3>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">Sample N=14.28K</span>
+</div>
+<!-- SHAP Weight Bars -->
+<div class="space-y-space-md">
+<!-- Weight 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface">
+<span class="font-headline-sm text-headline-sm">Gram Sabha Resolution Duration (Days)</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary font-bold">+0.342 SHAP (34.2%)</span>
+</div>
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Delay in receiving mandatory 70%/80% prior consent from affected tribal/rural bodies.</span>
+</div>
+<!-- Weight 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface">
+<span class="font-headline-sm text-headline-sm">District Court / High Court Injunction Frequency</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary-container font-bold">+0.268 SHAP (26.8%)</span>
+</div>
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 65%;"></div>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Writ petitions filed under Article 226 challenging market rate fixation factors.</span>
+</div>
+<!-- Weight 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface">
+<span class="font-headline-sm text-headline-sm">Circle Rate Divergence Ratio (Market vs Registered)</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary font-bold">+0.194 SHAP (19.4%)</span>
+</div>
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 48%;"></div>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Wide variance causing landowner disputes during Section 23 inquiry stage.</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-outline pt-space-xs font-telemetry-sm">
+<span>Inference Latency: 24ms per 1,000 plots</span>
+<span>SHAP TreeExplainer v0.41.0</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Sandbox Trigger Script for Ring Hover & Micro Animation -->
+<script>
+    // Lightweight component state demonstrator
+    document.addEventListener('DOMContentLoaded', () => {
+      // Interactive filter button visual toggling
+      const filterButtons = document.querySelectorAll('.bg-surface-container button');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('bg-surface-container-high', 'shadow-sm'));
+          btn.classList.add('bg-surface-container-high', 'shadow-sm');
+        });
+      });
+    });
+  </script>
+</div></main></div></body></html>

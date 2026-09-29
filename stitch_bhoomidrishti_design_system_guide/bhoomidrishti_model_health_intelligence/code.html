@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.sovereign-ribbon{background:linear-gradient(90deg,#FF9933 0%,#FF9933 33.33%,#FFFFFF 33.33%,#FFFFFF 66.66%,#138808 66.66%,#138808 100%);}.topo-grid-bg{background-color:#051424;background-image:radial-gradient(ellipse at 15% 0%,rgba(45,212,191,0.08) 0%,transparent 60%),radial-gradient(circle at 85% 30%,rgba(0,166,224,0.05) 0%,transparent 50%);}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"primary-fixed":"#62fae3","surface-variant":"#273647","outline-variant":"#3c4a46","surface-container-lowest":"#010f1f","tertiary":"#ffd29f","surface-container-low":"#0d1c2d","on-surface-variant":"#bacac5","on-secondary-fixed-variant":"#004c69","on-surface":"#d4e4fa","on-tertiary":"#472a00","on-secondary":"#00354a","surface-container-high":"#1c2b3c","surface-container":"#122131","error-container":"#93000a","primary-container":"#2dd4bf","on-primary-fixed":"#00201c","error":"#ffb4ab","outline":"#859490","on-error-container":"#ffdad6","on-secondary-fixed":"#001e2c","secondary":"#7bd0ff","background":"#051424","on-background":"#d4e4fa","surface-dim":"#051424","inverse-primary":"#006b5f","secondary-fixed-dim":"#7bd0ff","on-error":"#690005","inverse-surface":"#d4e4fa","on-tertiary-container":"#6d4400","on-tertiary-fixed":"#2a1700","secondary-container":"#00a6e0","on-secondary-container":"#00374d","tertiary-container":"#ffad3a","on-primary":"#003731","inverse-on-surface":"#233143","tertiary-fixed-dim":"#ffb95f","on-primary-container":"#00574d","surface-container-highest":"#273647","surface-bright":"#2c3a4c","primary-fixed-dim":"#3cddc7","surface":"#051424","on-tertiary-fixed-variant":"#653e00","tertiary-fixed":"#ffddb8","on-primary-fixed-variant":"#005047","secondary-fixed":"#c4e7ff","surface-tint":"#3cddc7","primary":"#57f1db"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin-md":"1.5rem","margin-lg":"2rem","margin":"1rem","gutter":"1rem","space-xs":"0.25rem","space-lg":"1.25rem","space-md":"0.75rem","gutter-lg":"1.5rem","space-xl":"2rem","space-sm":"0.5rem"},"fontFamily":{"headline-sm":["Space Grotesk"],"devanagari-body":["Noto Sans"],"body-md":["Inter"],"headline-xl-mobile":["Space Grotesk"],"body-sm":["Inter"],"headline-lg-mobile":["Space Grotesk"],"label-caps":["JetBrains Mono"],"headline-xl":["Space Grotesk"],"body-lg":["Inter"],"telemetry-lg":["JetBrains Mono"],"headline-lg":["Space Grotesk"],"devanagari-heading":["Noto Sans"],"telemetry-md":["JetBrains Mono"],"headline-md":["Space Grotesk"],"telemetry-sm":["JetBrains Mono"]},"fontSize":{"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"600"}],"devanagari-body":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"400"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"devanagari-heading":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}],"telemetry-md":["16px",{"lineHeight":"20px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"telemetry-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface text-on-surface font-body-md text-body-md topo-grid-bg min-h-screen"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low/90 backdrop-blur-xl z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest/60"><img alt="Brand logo. - Primary color: #2dd4bf
+- Font: spaceGrotesk
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XMGhpVKjaYMOG73JF90tOnh6KXRAIBqRpRgtRjfMgZ5_B8Jgq_yvMFgFgJDlLiurVeRiK-r7XEtPeA3TPm3aiJ3xz1ZXldf3l6pX-_JUvdcZyh7XItcS_h2cJvXKlLr0rM3F3OMZYd5xNb6hjkNWsjzrOIDXe7t7hSAjLboh0HUO6vDvdio8TIl6OxOYCJSN1NDMEG8ZPvxKm6rmsXWBu4xirRIBqTnaEnLS8_GkZuO_EmRNO4OAzuemM"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">BhoomiDrishti</span><span class="font-devanagari-heading text-devanagari-body text-on-surface-variant truncate -mt-space-xs">भूमिदृष्टि</span></div></div><div class="px-space-md pt-space-md pb-space-xs"><span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">Statutory Cadastre</span></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(45,212,191,0.2)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span class="truncate font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="gis-risk-map" href="#"><span class="material-symbols-outlined text-lg">map</span><span class="truncate font-body-md text-body-md">GIS Risk Map</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rfctlarr-pipeline" href="#"><span class="material-symbols-outlined text-lg">account_tree</span><span class="truncate font-body-md text-body-md">RFCTLARR Pipeline</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="predictive-hotspots" href="#"><span class="material-symbols-outlined text-lg">radar</span><span class="truncate font-body-md text-body-md">Predictive Hotspots</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="cala-casework" href="#"><span class="material-symbols-outlined text-lg">gavel</span><span class="truncate font-body-md text-body-md">CALA Casework</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rr-compensation" href="#"><span class="material-symbols-outlined text-lg">payments</span><span class="truncate font-body-md text-body-md">R&R Compensation</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(45,212,191,0.2)]" data-path="model-intelligence" href="#"><span class="material-symbols-outlined text-lg">analytics</span><span class="truncate font-body-md text-body-md">Model Intelligence</span></a></nav><div class="px-space-md pt-space-lg pb-space-xs"><span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">Governance</span></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(45,212,191,0.2)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings-compliance" href="#"><span class="material-symbols-outlined text-lg">verified_user</span><span class="truncate font-body-md text-body-md">Settings & Compliance</span></a></nav></div><div class="p-space-md bg-surface-container-lowest/40"><div class="flex items-center justify-between px-space-sm py-space-xs rounded bg-surface-container-high/60"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-caps text-label-caps text-on-surface">NIC-GRID LIVE</span></div><span class="font-telemetry-sm text-telemetry-sm text-secondary">2013-ACT</span></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-low/85 backdrop-blur-xl z-40 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-[62px] px-margin-lg flex items-center justify-between gap-gutter"><div class="flex items-center gap-gutter flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span><input class="w-full pl-10 pr-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-1 focus:ring-primary transition-all" placeholder="Search Cadastral Survey No., Village, or Khasra ID..." type="text"/></div></div><div class="flex items-center gap-space-lg"><button aria-label="Notifications" class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-low"></span></button><div class="h-6 w-px bg-surface-container-highest"></div><div class="flex items-center gap-space-xs px-space-md py-1 rounded bg-surface-container-high/80"><span class="material-symbols-outlined text-primary text-sm">tune</span><span class="font-label-caps text-label-caps uppercase text-primary font-bold tracking-widest">ADMIN</span></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right"><span class="font-headline-sm text-body-sm text-on-surface leading-tight">Dr. V. Ramanathan</span><span class="font-label-caps text-label-caps text-outline">DISTRICT COLLECTOR</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida/AEtjO1WGt4a_MHjslgf-CakPVVHmXzwn8qADmycaelKqAQVpjaVSzopdk6Jbki55xDyL8oHy9QUJLoCzMlqB_i1NMNPu5SQkzygtNQn5ZLb4n6Gg7OU_jJw5-UZTz8_y9M02LZ-qcu4riu1XQVk3_PDSS5x5wMbhnWta5oHTyOnTluw68wlwZlk3rBamAb9H9PBpzoFpHbpa_8PsBF3XpshSZTl1GoS4c1UvBuWFE3OkJjcRAmKCIgBZ_aypDCw"/></div></div></div><div class="h-[2px] w-full sovereign-ribbon"></div></header><main class="w-full pt-16 px-margin-lg py-margin flex-1"><div class="flex flex-col w-full text-on-surface">
+<!-- AMBIENT GEOMETRIC / TOPOGRAPHIC GLOW BACKDROP -->
+<div class="relative w-full overflow-hidden pb-margin-lg">
+<!-- Top Navigational Breadcrumb & Metadata Corridor -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps tracking-wider text-outline uppercase">
+<span class="text-on-surface-variant">STATUTORY GOVERNANCE</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface-variant">MODEL TELEMETRY</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-bold">ML ENGINE HEALTH & DRIFT AUDIT</span>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container-high text-on-surface text-body-sm font-label-caps">
+<span class="inline-block w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="text-primary font-bold text-label-caps">NIC-CERT ENCLAVE SECURED</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant text-label-caps">SHAP KERNEL ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- 1. PAGE HEADER -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-margin-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-md flex-wrap">
+<h1 class="font-headline-xl text-headline-xl tracking-tight text-on-surface">
+            Model Health & Intelligence
+          </h1>
+<span class="px-space-sm py-0.5 rounded text-label-caps font-label-caps bg-surface-container-highest text-primary-fixed-dim uppercase tracking-wider">
+            RFCTLARR Engine v1.3
+          </span>
+</div>
+<div class="flex items-center gap-space-sm mt-space-xs">
+<span class="font-devanagari-heading text-devanagari-body text-secondary">प्रतिमान स्वास्थ्य एवं बुद्धिमत्ता</span>
+<span class="text-outline-variant">|</span>
+<span class="font-body-md text-body-md text-on-surface-variant">RFCTLARR Predictive Engine Governance & Statutory Validation</span>
+</div>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-base text-secondary">download</span>
+<span>Download Audit Log (JSON)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps uppercase transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">tune</span>
+<span>Statutory Telemetry Config</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-highest/60 text-outline cursor-not-allowed font-label-caps text-label-caps uppercase shadow-sm" disabled="" type="button">
+<span class="material-symbols-outlined text-base">rocket_launch</span>
+<span>Deploy Candidate v1.4</span>
+</button>
+</div>
+</div>
+<!-- 2. TOP SECTION - CURRENT PRODUCTION MODEL CARD -->
+<div class="relative w-full rounded-xl bg-surface-container-low shadow-xl p-space-lg mb-margin-lg overflow-hidden">
+<!-- Decorative radial watermarking -->
+<div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<!-- Top Strip: Model Tag & Telemetry Chips -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md pb-space-md mb-space-md">
+<div class="flex items-start sm:items-center gap-space-md flex-col sm:flex-row">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl">neurology</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface">
+                XGBoost v1.3 — Gradient Boosted Trees for Statutory Delay Lapse
+              </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded bg-primary-container/20 text-primary font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                PRODUCTION ACTIVE
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Statutory Cadastral Early-Warning Inference System • NIC Distributed Compute Cluster
+            </span>
+</div>
+</div>
+<div class="flex items-center gap-space-md flex-wrap font-label-caps text-label-caps">
+<div class="flex flex-col">
+<span class="text-outline uppercase text-[10px]">Trained Date</span>
+<span class="text-on-surface font-telemetry-sm text-telemetry-sm">12 AUG 2026</span>
+</div>
+<div class="w-px h-6 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="text-outline uppercase text-[10px]">Dataset Baseline</span>
+<span class="text-on-surface font-telemetry-sm text-telemetry-sm">14,820 CORRIDORS</span>
+</div>
+<div class="w-px h-6 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="text-outline uppercase text-[10px]">Input Space</span>
+<span class="text-primary font-telemetry-sm text-telemetry-sm">42 STATUTORY FEATURES</span>
+</div>
+</div>
+</div>
+<!-- Main Telemetry Grid (6 KPIs) -->
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-space-md pt-space-xs">
+<!-- KPI 1: AUC-ROC -->
+<div class="flex flex-col justify-between p-space-md rounded-lg bg-surface-container shadow-sm">
+<div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mb-space-xs">
+<span>AUC-ROC</span>
+<span class="text-primary">+0.13</span>
+</div>
+<div class="font-telemetry-lg text-telemetry-lg text-primary tracking-tight">
+              0.89
+            </div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<div class="w-full bg-surface-container-highest h-1 rounded overflow-hidden">
+<div class="bg-primary h-full rounded" style="width: 89%;"></div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant block mt-1">Baseline: 0.76</span>
+</div>
+</div>
+<!-- KPI 2: Statutory Recall -->
+<div class="flex flex-col justify-between p-space-md rounded-lg bg-surface-container shadow-sm">
+<div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mb-space-xs">
+<span>STATUTORY RECALL</span>
+<span class="text-secondary">CRITICAL</span>
+</div>
+<div class="font-telemetry-lg text-telemetry-lg text-on-surface tracking-tight">
+              0.82
+            </div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<div class="w-full bg-surface-container-highest h-1 rounded overflow-hidden">
+<div class="bg-secondary-container h-full rounded" style="width: 82%;"></div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant block mt-1">82% Sec-25 pre-90d lapse flags</span>
+</div>
+</div>
+<!-- KPI 3: Precision -->
+<div class="flex flex-col justify-between p-space-md rounded-lg bg-surface-container shadow-sm">
+<div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mb-space-xs">
+<span>PRECISION</span>
+<span class="text-on-surface-variant">HIGH RISK</span>
+</div>
+<div class="font-telemetry-lg text-telemetry-lg text-on-surface tracking-tight">
+              0.74
+            </div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<div class="w-full bg-surface-container-highest h-1 rounded overflow-hidden">
+<div class="bg-primary-fixed-dim h-full rounded" style="width: 74%;"></div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant block mt-1">Class 1 • Delay Risk > 80%</span>
+</div>
+</div>
+<!-- KPI 4: F1 Score -->
+<div class="flex flex-col justify-between p-space-md rounded-lg bg-surface-container shadow-sm">
+<div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mb-space-xs">
+<span>F1 SCORE</span>
+<span class="text-on-surface-variant">HARMONIC</span>
+</div>
+<div class="font-telemetry-lg text-telemetry-lg text-on-surface tracking-tight">
+              0.78
+            </div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<div class="w-full bg-surface-container-highest h-1 rounded overflow-hidden">
+<div class="bg-secondary h-full rounded" style="width: 78%;"></div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant block mt-1">Balanced classification</span>
+</div>
+</div>
+<!-- KPI 5: Latency -->
+<div class="flex flex-col justify-between p-space-md rounded-lg bg-surface-container shadow-sm">
+<div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mb-space-xs">
+<span>INFERENCE LATENCY</span>
+<span class="text-primary font-bold">OPTIMAL</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface tracking-tight">18</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">ms</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<span class="font-body-sm text-[11px] text-on-surface-variant block">Per corridor cadastre node</span>
+<span class="font-label-caps text-[10px] text-outline block mt-0.5">P99: 34ms SLA</span>
+</div>
+</div>
+<!-- KPI 6: Concept Drift -->
+<div class="flex flex-col justify-between p-space-md rounded-lg bg-surface-container shadow-sm">
+<div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mb-space-xs">
+<span>CONCEPT DRIFT</span>
+<span class="inline-block w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="font-telemetry-lg text-telemetry-lg text-primary tracking-tight">
+              0.041
+            </div>
+</div>
+<div class="mt-space-sm pt-space-xs">
+<span class="font-body-sm text-[11px] text-primary block font-medium">Stable Performance</span>
+<span class="font-label-caps text-[10px] text-outline block mt-0.5">KS-test p > 0.05</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. MIDDLE SECTION - 2-COLUMN ASYMMETRIC GRID (8 cols left / 4 cols right) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg">
+<!-- LEFT COLUMN (8 cols): Comparison, Active Training Pipeline, Lineage Table -->
+<div class="xl:col-span-8 flex flex-col gap-gutter-lg">
+<!-- A. BEFORE / AFTER MODEL COMPARISON PANEL -->
+<div class="rounded-xl bg-surface-container-low shadow-xl p-space-lg flex flex-col">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-lg">compare_arrows</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">
+                  Model Performance Benchmark: v1.3 (Current) vs. Candidate v1.4 (Retrained)
+                </h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Evaluated on Holdout Test Set (2,450 RFCTLARR Projects from 2024–2025)
+              </p>
+</div>
+<div class="self-start sm:self-auto px-space-sm py-1 rounded bg-surface-container-high text-label-caps font-label-caps text-primary">
+              DELTAS TESTED • N=2,450
+            </div>
+</div>
+<!-- Split Benchmark Display -->
+<div class="grid grid-cols-1 md:grid-cols-11 gap-space-md items-center mt-space-sm">
+<!-- Old Model v1.3 (Left - 5 cols) -->
+<div class="md:col-span-5 p-space-lg rounded-xl bg-surface-container shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">Production Model</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-caps text-label-caps text-on-surface-variant">v1.3</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase">Active Base</span>
+</div>
+<!-- Metric Bars -->
+<div class="flex flex-col gap-space-md pt-space-xs">
+<!-- Recall -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STATUTORY RECALL</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface">0.82</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-outline h-full rounded" style="width: 82%;"></div>
+</div>
+</div>
+<!-- AUC -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AUC-ROC</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface">0.89</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-outline h-full rounded" style="width: 89%;"></div>
+</div>
+</div>
+<!-- Precision -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">PRECISION</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface">0.74</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-outline h-full rounded" style="width: 74%;"></div>
+</div>
+</div>
+<!-- F1 Score -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">F1 SCORE</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface">0.78</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-outline h-full rounded" style="width: 78%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Directional Flow Pillar (Center - 1 col) -->
+<div class="md:col-span-1 flex flex-col items-center justify-center py-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary shadow-md">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+<span class="font-label-caps text-[9px] text-primary uppercase tracking-tighter mt-1 text-center font-bold">
+                DELTA
+              </span>
+</div>
+<!-- Newly Retrained Candidate v1.4 (Right - 5 cols) -->
+<div class="md:col-span-5 p-space-lg rounded-xl bg-surface-container-high/90 shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-body-lg font-bold text-primary">Candidate Model</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 font-label-caps text-label-caps text-primary font-bold">v1.4</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase">STAGE EVAL</span>
+</div>
+<!-- Metric Bars with Uplift Highlights -->
+<div class="flex flex-col gap-space-md pt-space-xs">
+<!-- Recall -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">STATUTORY RECALL</span>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-md text-telemetry-md text-primary font-bold">0.86</span>
+<span class="inline-flex items-center text-[10px] font-label-caps text-primary-fixed bg-surface-container-highest px-1 rounded">
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span>+0.04 (+4.9%)
+                      </span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-primary h-full rounded shadow-[0_0_8px_rgba(87,241,219,0.5)]" style="width: 86%;"></div>
+</div>
+</div>
+<!-- AUC -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">AUC-ROC</span>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-md text-telemetry-md text-primary font-bold">0.91</span>
+<span class="inline-flex items-center text-[10px] font-label-caps text-primary-fixed bg-surface-container-highest px-1 rounded">
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span>+0.02 (+2.2%)
+                      </span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-primary h-full rounded shadow-[0_0_8px_rgba(87,241,219,0.5)]" style="width: 91%;"></div>
+</div>
+</div>
+<!-- Precision -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">PRECISION</span>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-md text-telemetry-md text-primary font-bold">0.77</span>
+<span class="inline-flex items-center text-[10px] font-label-caps text-primary-fixed bg-surface-container-highest px-1 rounded">
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span>+0.03 (+4.1%)
+                      </span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-primary h-full rounded shadow-[0_0_8px_rgba(87,241,219,0.5)]" style="width: 77%;"></div>
+</div>
+</div>
+<!-- F1 Score -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">F1 SCORE</span>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-md text-telemetry-md text-primary font-bold">0.81</span>
+<span class="inline-flex items-center text-[10px] font-label-caps text-primary-fixed bg-surface-container-highest px-1 rounded">
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span>+0.03 (+3.8%)
+                      </span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-primary h-full rounded shadow-[0_0_8px_rgba(87,241,219,0.5)]" style="width: 81%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- B. ACTIVE TRAINING PIPELINE TELEMETRY CARD -->
+<div class="rounded-xl bg-surface-container-low shadow-xl p-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">reorder</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Model Retraining Pipeline</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Continuous Autonomous Statutory Calibration</span>
+</div>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-body-sm font-bold shadow-[0_0_16px_rgba(45,212,191,0.3)] hover:opacity-95 transition-all" type="button">
+<span class="material-symbols-outlined text-base font-bold">autorenew</span>
+<span>Retrain model on new batch</span>
+</button>
+</div>
+<!-- Mid-Execution State Container -->
+<div class="p-space-md rounded-xl bg-surface-container shadow-inner">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-headline-sm text-body-md text-on-surface">
+                  Training on 1,412 new records
+                </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  (From recent Q3 district land acquisitions)
+                </span>
+</div>
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-outline">
+<span>Batch: <strong class="text-on-surface font-telemetry-sm">BATCH-2026-Q3-IN-889</strong></span>
+</div>
+</div>
+<!-- Dynamic Progress Bar -->
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden p-0.5 shadow-inner">
+<div class="bg-gradient-to-r from-secondary-container via-primary to-primary-fixed h-full rounded-full transition-all duration-500 relative" style="width: 62%;">
+<div class="absolute right-0 top-0 bottom-0 w-4 bg-white/40 blur-[2px] rounded-full"></div>
+</div>
+</div>
+<!-- Timeline & Controls -->
+<div class="flex items-center justify-between mt-space-sm pt-space-xs">
+<div class="flex items-center gap-space-md font-label-caps text-label-caps">
+<span class="text-on-surface-variant">
+                  Elapsed: <strong class="text-on-surface font-telemetry-sm">04m 18s</strong>
+</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant">
+                  Est. Remaining: <strong class="text-primary font-telemetry-sm">02m 34s</strong>
+</span>
+<span class="text-outline-variant">•</span>
+<span class="text-primary font-bold font-telemetry-sm">62% COMPLETE</span>
+</div>
+<button class="text-error hover:text-on-error-container font-label-caps text-label-caps uppercase transition-colors" type="button">
+                Cancel retrain run
+              </button>
+</div>
+</div>
+</div>
+<!-- C. VERSION HISTORY & STATUTORY ROLLBACK TABLE -->
+<div class="rounded-xl bg-surface-container-low shadow-xl p-space-lg flex flex-col">
+<div class="flex items-center justify-between pb-space-md mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-lg">history</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">
+                Model Lineage & Checkpoint Archive
+              </h3>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase">
+              Immutable Cadastral Ledger
+            </span>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-lowest/80 text-outline font-label-caps text-label-caps uppercase tracking-wider">
+<th class="py-space-sm px-space-md rounded-l">Version</th>
+<th class="py-space-sm px-space-md">Training Date</th>
+<th class="py-space-sm px-space-md text-right">Recall</th>
+<th class="py-space-sm px-space-md text-right">AUC</th>
+<th class="py-space-sm px-space-md">Dataset Size</th>
+<th class="py-space-sm px-space-md">Status</th>
+<th class="py-space-sm px-space-md text-right rounded-r">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-body-sm font-body-sm">
+<!-- Row 1: Active -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-space-md px-space-md font-label-caps text-label-caps font-bold text-primary">
+                    v1.3
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface">
+                    12 Aug 2026
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface font-semibold">
+                    0.82
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface font-semibold">
+                    0.89
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    14,820 records
+                  </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                      ACTIVE
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<span class="font-label-caps text-[11px] text-outline uppercase font-semibold">
+                      Current (Locked)
+                    </span>
+</td>
+</tr>
+<!-- Row 2: v1.2 -->
+<tr class="bg-surface-container/30 hover:bg-surface-container-high/40 transition-colors">
+<td class="py-space-md px-space-md font-label-caps text-label-caps text-on-surface-variant font-bold">
+                    v1.2
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    15 Feb 2026
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface-variant">
+                    0.79
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface-variant">
+                    0.86
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    12,940 records
+                  </td>
+<td class="py-space-md px-space-md">
+<span class="inline-block px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps">
+                      ARCHIVED
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-label-caps font-label-caps uppercase transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[13px]">history</span>
+                      Rollback
+                    </button>
+</td>
+</tr>
+<!-- Row 3: v1.1 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-space-md px-space-md font-label-caps text-label-caps text-on-surface-variant font-bold">
+                    v1.1
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    20 Sep 2025
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface-variant">
+                    0.77
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface-variant">
+                    0.84
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    11,200 records
+                  </td>
+<td class="py-space-md px-space-md">
+<span class="inline-block px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps">
+                      ARCHIVED
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-label-caps font-label-caps uppercase transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[13px]">history</span>
+                      Rollback
+                    </button>
+</td>
+</tr>
+<!-- Row 4: v1.0 -->
+<tr class="bg-surface-container/30 hover:bg-surface-container-high/40 transition-colors">
+<td class="py-space-md px-space-md font-label-caps text-label-caps text-on-surface-variant font-bold">
+                    v1.0
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    10 Apr 2025
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface-variant">
+                    0.73
+                  </td>
+<td class="py-space-md px-space-md text-right font-telemetry-sm text-on-surface-variant">
+                    0.80
+                  </td>
+<td class="py-space-md px-space-md font-telemetry-sm text-on-surface-variant">
+                    9,500 records
+                  </td>
+<td class="py-space-md px-space-md">
+<span class="inline-block px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps">
+                      ARCHIVED
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-label-caps font-label-caps uppercase transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[13px]">history</span>
+                      Rollback
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (4 cols): SHAP Feature Importance & Statutory Fairness Card -->
+<div class="xl:col-span-4 flex flex-col gap-gutter-lg">
+<!-- GLOBAL FEATURE IMPORTANCE CARD -->
+<div class="rounded-xl bg-surface-container-low shadow-xl p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">analytics</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Global Feature Importance</h3>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-caps text-[10px] text-primary">TreeSHAP</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg">
+              Relative contribution to RFCTLARR delay classification across 14,820 corridors.
+            </p>
+<!-- Ranked Horizontal Bar Chart -->
+<div class="flex flex-col gap-space-md">
+<!-- Feature 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">1. Compensation disbursed %</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-secondary font-bold">+</span>
+<span class="text-on-surface">0.284</span>
+<span class="text-outline text-[11px]">(28.4%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-primary h-full rounded shadow-[0_0_8px_rgba(87,241,219,0.4)]" style="width: 28.4%;"></div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">2. Days since last update</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-error font-bold">−</span>
+<span class="text-on-surface">0.216</span>
+<span class="text-outline text-[11px]">(21.6%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-primary-container h-full rounded shadow-[0_0_6px_rgba(45,212,191,0.3)]" style="width: 21.6%;"></div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">3. Pending legal objections</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-error font-bold">−</span>
+<span class="text-on-surface">0.182</span>
+<span class="text-outline text-[11px]">(18.2%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-secondary h-full rounded shadow-[0_0_6px_rgba(123,208,255,0.3)]" style="width: 18.2%;"></div>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">4. Land parcel count</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-secondary font-bold">+</span>
+<span class="text-on-surface">0.125</span>
+<span class="text-outline text-[11px]">(12.5%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-secondary-container h-full rounded" style="width: 12.5%;"></div>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">5. Project type</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-secondary font-bold">+</span>
+<span class="text-on-surface">0.087</span>
+<span class="text-outline text-[11px]">(8.7%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-outline h-full rounded" style="width: 8.7%;"></div>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">6. Stage duration</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-error font-bold">−</span>
+<span class="text-on-surface">0.061</span>
+<span class="text-outline text-[11px]">(6.1%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-outline h-full rounded" style="width: 6.1%;"></div>
+</div>
+</div>
+<!-- Feature 7 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium truncate max-w-[200px]">7. Landowner consent %</span>
+<div class="flex items-center gap-1.5 font-telemetry-sm">
+<span class="text-secondary font-bold">+</span>
+<span class="text-on-surface">0.045</span>
+<span class="text-outline text-[11px]">(4.5%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-2 rounded overflow-hidden">
+<div class="bg-outline-variant h-full rounded" style="width: 4.5%;"></div>
+</div>
+</div>
+</div>
+<!-- Legend strip -->
+<div class="flex items-center justify-between mt-space-lg pt-space-md text-[11px] font-label-caps text-outline bg-surface-container/60 p-space-sm rounded">
+<span class="flex items-center gap-1">
+<strong class="text-secondary">+</strong> Accelerates Risk
+              </span>
+<span class="flex items-center gap-1">
+<strong class="text-error">−</strong> Dampens Risk
+              </span>
+<span>Kernel: TreeSHAP-Exact</span>
+</div>
+</div>
+<!-- Statutory Compliance Callout Box -->
+<div class="mt-space-lg p-space-md rounded-lg bg-surface-container shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-xl flex-shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-sm text-on-surface font-bold">
+                Statutory Model Compliance Guarantee
+              </span>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1 leading-relaxed">
+                All features audited under RFCTLARR Act 2013 non-discriminatory statutory fairness guidelines. No demographic, caste, or personal identity indicators are ingested into the active feature space.
+              </p>
+</div>
+</div>
+</div>
+<!-- DRIFT DETECTION & CALIBRATION SENSOR (Visual Widget) -->
+<div class="rounded-xl bg-surface-container-low shadow-xl p-space-lg flex flex-col">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">Real-Time Data Distribution</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-label-caps text-label-caps">KS-STAT 0.041</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+            Kolmogorov-Smirnov distance between Training Baseline and 30-Day Stream.
+          </span>
+<!-- Inline SVG Distribution Density Curve -->
+<div class="w-full h-32 bg-surface-container rounded-lg p-space-sm flex items-center justify-center relative overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 320 100">
+<defs>
+<lineargradient id="streamGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#57f1db" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#57f1db" stop-opacity="0.0"></stop>
+</lineargradient>
+<lineargradient id="baseGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#7bd0ff" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#7bd0ff" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Baseline curve -->
+<path d="M 0,85 Q 80,85 110,40 T 160,20 T 210,60 T 320,85 L 320,100 L 0,100 Z" fill="url(#baseGrad)"></path>
+<path d="M 0,85 Q 80,85 110,40 T 160,20 T 210,60 T 320,85" fill="none" stroke="#7bd0ff" stroke-dasharray="3,3" stroke-width="1.5"></path>
+<!-- Current 30-Day Stream Curve -->
+<path d="M 0,85 Q 75,82 115,35 T 162,18 T 215,55 T 320,85 L 320,100 L 0,100 Z" fill="url(#streamGrad)"></path>
+<path d="M 0,85 Q 75,82 115,35 T 162,18 T 215,55 T 320,85" fill="none" stroke="#57f1db" stroke-width="2"></path>
+</svg>
+<div class="absolute bottom-2 right-3 font-label-caps text-[10px] text-on-surface-variant flex items-center gap-2">
+<span class="flex items-center gap-1"><span class="w-2 h-0.5 bg-secondary inline-block"></span> Baseline</span>
+<span class="flex items-center gap-1"><span class="w-2 h-0.5 bg-primary inline-block"></span> 30D Stream</span>
+</div>
+</div>
+<div class="mt-space-sm flex justify-between items-center font-label-caps text-label-caps text-outline">
+<span>DIVERGENCE THRESHOLD: 0.150</span>
+<span class="text-primary font-bold">STATUS: COMPLIANT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. OFFICIAL GOVERNANCE & TELEMETRY FOOTER -->
+<div class="mt-margin-lg pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-md text-outline font-label-caps text-[11px] uppercase tracking-wider">
+<div class="flex items-center gap-space-xs text-center md:text-left">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>DECISION SUPPORT SYSTEM • NIC CLOUD ENCLAVE • MODEL GOVERNANCE UNDER MINISTRY OF RURAL DEVELOPMENT (MoRD)</span>
+</div>
+<div class="flex items-center gap-space-sm font-telemetry-sm text-on-surface-variant">
+<span>DIGITAL SIGNATURE HASH:</span>
+<code class="px-space-xs py-0.5 rounded bg-surface-container text-primary font-bold">0x8F3B...C901</code>
+<span class="text-outline-variant">•</span>
+<span>SHA-256 VERIFIED</span>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

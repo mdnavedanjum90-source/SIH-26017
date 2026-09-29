@@ -1,0 +1,581 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Noto+Sans:wght@400;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed-dim":"#7bd0ff","secondary-fixed":"#c4e7ff","on-error-container":"#ffdad6","primary":"#57f1db","on-tertiary-container":"#6d4400","error":"#ffb4ab","surface-variant":"#273647","on-primary-fixed":"#00201c","primary-fixed":"#62fae3","background":"#051424","on-error":"#690005","inverse-on-surface":"#233143","on-surface-variant":"#bacac5","on-surface":"#d4e4fa","on-primary-container":"#00574d","surface-tint":"#3cddc7","inverse-primary":"#006b5f","on-primary":"#003731","on-tertiary-fixed":"#2a1700","on-secondary-fixed-variant":"#004c69","outline":"#859490","tertiary-fixed":"#ffddb8","secondary":"#7bd0ff","primary-container":"#2dd4bf","secondary-container":"#00a6e0","surface-container-low":"#0d1c2d","on-primary-fixed-variant":"#005047","surface":"#051424","on-secondary-container":"#00374d","outline-variant":"#3c4a46","surface-dim":"#051424","tertiary-container":"#ffad3a","surface-container-lowest":"#010f1f","on-secondary-fixed":"#001e2c","on-tertiary-fixed-variant":"#653e00","surface-container-highest":"#273647","on-secondary":"#00354a","inverse-surface":"#d4e4fa","on-background":"#d4e4fa","error-container":"#93000a","surface-container":"#122131","tertiary":"#ffd29f","surface-bright":"#2c3a4c","on-tertiary":"#472a00","primary-fixed-dim":"#3cddc7","surface-container-high":"#1c2b3c","tertiary-fixed-dim":"#ffb95f"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"2rem","margin":"1rem","margin-md":"1.5rem","margin-lg":"2rem","gutter":"1rem","space-lg":"1.25rem","space-md":"0.75rem","gutter-lg":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem"},"fontFamily":{"body-sm":["Inter"],"devanagari-body":["Noto Sans"],"body-lg":["Inter"],"headline-xl-mobile":["Space Grotesk"],"telemetry-md":["JetBrains Mono"],"headline-xl":["Space Grotesk"],"headline-sm":["Space Grotesk"],"body-md":["Inter"],"telemetry-sm":["JetBrains Mono"],"devanagari-heading":["Noto Sans"],"label-caps":["JetBrains Mono"],"headline-md":["Space Grotesk"],"telemetry-lg":["JetBrains Mono"],"headline-lg-mobile":["Space Grotesk"],"headline-lg":["Space Grotesk"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"devanagari-body":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}],"telemetry-md":["16px",{"lineHeight":"20px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"400"}],"telemetry-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"devanagari-heading":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-xl"><div class="h-16 w-full px-gutter-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><img alt="Brand logo. - Primary color: #2dd4bf
+- Font: spaceGrotesk
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XMGhpVKjaYMOG73JF90tOnh6KXRAIBqRpRgtRjfMgZ5_B8Jgq_yvMFgFgJDlLiurVeRiK-r7XEtPeA3TPm3aiJ3xz1ZXldf3l6pX-_JUvdcZyh7XItcS_h2cJvXKlLr0rM3F3OMZYd5xNb6hjkNWsjzrOIDXe7t7hSAjLboh0HUO6vDvdio8TIl6OxOYCJSN1NDMEG8ZPvxKm6rmsXWBu4xirRIBqTnaEnLS8_GkZuO_EmRNO4OAzuemM"><div class="flex flex-col justify-center"><div class="flex items-baseline gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">BhoomiDrishti</span><span class="font-devanagari-heading text-devanagari-heading text-tertiary-fixed font-semibold">भूमिदृष्टि</span></div><span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">See delays before they happen.</span></div></div><div class="flex-1 max-w-xl mx-space-md hidden xl:flex items-center gap-space-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-base pointer-events-none">travel_explore</span><input class="w-full bg-surface-container-low pl-9 pr-12 py-1.5 rounded-lg text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search cadastral survey, corridor, or district (Ctrl+K)..." type="text"><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-caps text-label-caps bg-surface-container-high px-1.5 py-0.5 rounded text-on-surface-variant">^K</kbd></div><div class="hidden 2xl:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container-low shrink-0"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider">GIS: NIC-BHUVAN 2024 · EPSG:4326</span></div></div><div class="flex items-center gap-space-md shrink-0"><button class="relative p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container text-on-surface font-label-caps text-label-caps"><span class="material-symbols-outlined text-sm text-secondary">shield_person</span><span class="">STATE POLICYMAKER</span><span class="material-symbols-outlined text-xs text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="text-right hidden sm:block"><div class="font-body-sm text-body-sm text-on-surface font-semibold">Shri R. V. Raman, IAS</div><div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Joint Secy (MoRD)</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WGt4a_MHjslgf-CakPVVHmXzwn8qADmycaelKqAQVpjaVSzopdk6Jbki55xDyL8oHy9QUJLoCzMlqB_i1NMNPu5SQkzygtNQn5ZLb4n6Gg7OU_jJw5-UZTz8_y9M02LZ-qcu4riu1XQVk3_PDSS5x5wMbhnWta5oHTyOnTluw68wlwZlk3rBamAb9H9PBpzoFpHbpa_8PsBF3XpshSZTl1GoS4c1UvBuWFE3OkJjcRAmKCIgBZ_aypDCw"></div></div></div><div class="w-full h-[2px] flex"><div class="w-1/3 h-full bg-[#FF9933]"></div><div class="w-1/3 h-full bg-[#FFFFFF]"></div><div class="w-1/3 h-full bg-[#138808]"></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-60 bg-surface-container-lowest/90 backdrop-blur-md z-40 flex flex-col justify-between p-space-sm"><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-space-xs font-label-caps text-label-caps text-on-surface-variant/70 uppercase tracking-widest">Statutory Ops</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg">analytics</span><span class="font-body-sm text-body-sm">Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg transition-all bg-primary-container text-on-primary-container font-semibold" data-path="gis-risk-map" href="#"><span class="material-symbols-outlined text-lg">map</span><span class="font-body-sm text-body-sm">GIS Risk Map</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rfctlarr-pipeline" href="#"><span class="material-symbols-outlined text-lg">account_tree</span><span class="font-body-sm text-body-sm">RFCTLARR Pipeline</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="predictive-hotspots" href="#"><span class="material-symbols-outlined text-lg">warning</span><span class="font-body-sm text-body-sm">Predictive Hotspots</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="cala-casework" href="#"><span class="material-symbols-outlined text-lg">gavel</span><span class="font-body-sm text-body-sm">CALA Casework</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rr-compensation" href="#"><span class="material-symbols-outlined text-lg">currency_rupee</span><span class="font-body-sm text-body-sm">R&amp;R Compensation</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="model-intelligence" href="#"><span class="material-symbols-outlined text-lg">memory</span><span class="font-body-sm text-body-sm">Model Intelligence</span></a></nav></div><div class="flex flex-col gap-1"><div class="px-space-sm py-space-xs font-label-caps text-label-caps text-on-surface-variant/70 uppercase tracking-widest">Governance</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings-compliance" href="#"><span class="material-symbols-outlined text-lg">verified_user</span><span class="font-body-sm text-body-sm">Settings &amp; Compliance</span></a></nav><div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1"><div class="flex justify-between items-center"><span class="font-label-caps text-label-caps text-on-surface-variant">Sovereign Enclave</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span></div><span class="font-telemetry-sm text-telemetry-sm text-on-surface">NIC-MoRD CLOUD</span></div></div></aside><div class="pl-60"><main class="relative w-full pt-16 min-h-screen bg-surface"><div class="flex flex-col w-full">
+<div class="relative w-full h-[calc(100vh-66px)] overflow-hidden select-none bg-surface-container-lowest">
+<!-- Geospatial Viewport: Graticule grid, Topo rings, and Cartographic Canvas -->
+<div class="absolute inset-0 z-0 overflow-hidden bg-[#070B14]">
+<!-- SVG Geo Canvas -->
+<svg class="w-full h-full object-cover" id="gis-carto-canvas" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1440 900">
+<defs>
+<!-- Radial & Linear Gradients for Heat & Borders -->
+<linearGradient id="apGlowGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#57f1db" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.6"></stop>
+</linearGradient>
+<filter height="140%" id="corridorGlow" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="3"></feGaussianBlur>
+<feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+</filter>
+<filter height="140%" id="activePolyGlow" width="140%" x="-20%" y="-20%">
+<feGaussianBlur in="SourceAlpha" stdDeviation="4"></feGaussianBlur>
+<feOffset dx="0" dy="0" result="offsetblur"></feOffset>
+<feFlood flood-color="#2dd4bf" flood-opacity="0.65"></feFlood>
+<feComposite in2="offsetblur" operator="in"></feComposite>
+<feMerge>
+<feMergeNode></feMergeNode>
+<feMergeNode in="SourceGraphic"></feMergeNode>
+</feMerge>
+</filter>
+</defs>
+<!-- Geographic Coordinate Graticule (Parallels & Meridians every 4 degrees) -->
+<g class="opacity-30 stroke-outline-variant stroke-[0.7] [stroke-dasharray:3,4]">
+<!-- Parallels -->
+<line x1="0" x2="1440" y1="120" y2="120"></line> <!-- 36° N -->
+<line x1="0" x2="1440" y1="210" y2="210"></line> <!-- 32° N -->
+<line x1="0" x2="1440" y1="300" y2="300"></line> <!-- 28° N -->
+<line x1="0" x2="1440" y1="390" y2="390"></line> <!-- 24° N -->
+<line x1="0" x2="1440" y1="480" y2="480"></line> <!-- 20° N -->
+<line x1="0" x2="1440" y1="570" y2="570"></line> <!-- 16° N -->
+<line x1="0" x2="1440" y1="660" y2="660"></line> <!-- 12° N -->
+<line x1="0" x2="1440" y1="750" y2="750"></line> <!-- 8° N -->
+<!-- Meridians -->
+<line x1="420" x2="420" y1="0" y2="900"></line> <!-- 68° E -->
+<line x1="510" x2="510" y1="0" y2="900"></line> <!-- 72° E -->
+<line x1="600" x2="600" y1="0" y2="900"></line> <!-- 76° E -->
+<line x1="690" x2="690" y1="0" y2="900"></line> <!-- 80° E -->
+<line x1="780" x2="780" y1="0" y2="900"></line> <!-- 84° E -->
+<line x1="870" x2="870" y1="0" y2="900"></line> <!-- 88° E -->
+<line x1="960" x2="960" y1="0" y2="900"></line> <!-- 92° E -->
+<line x1="1050" x2="1050" y1="0" y2="900"></line> <!-- 96° E -->
+</g>
+<!-- Coordinate Graticule Typography Annotations -->
+<g class="fill-outline font-label-caps text-label-caps opacity-60">
+<text x="380" y="304">28°00'N</text>
+<text x="380" y="394">24°00'N</text>
+<text x="380" y="484">20°00'N</text>
+<text x="380" y="574">16°00'N</text>
+<text x="380" y="664">12°00'N</text>
+<text x="514" y="870">72°00'E</text>
+<text x="604" y="870">76°00'E</text>
+<text x="694" y="870">80°00'E</text>
+<text x="784" y="870">84°00'E</text>
+<text x="874" y="870">88°00'E</text>
+</g>
+<!-- Faint Topographic Contour Rings & Geo Hillshade Lines -->
+<g class="stroke-surface-variant/40 fill-none stroke-[0.8]" opacity="0.45">
+<path d="M 520,380 C 580,360 620,400 660,390 S 740,360 820,390"></path>
+<path d="M 540,430 C 600,410 650,440 700,430 S 770,410 810,430"></path>
+<path d="M 580,510 C 630,490 680,520 730,510 S 790,490 830,520"></path>
+<path d="M 610,600 C 660,590 690,620 720,600 S 750,610 780,630"></path>
+<ellipse cx="680" cy="560" rx="90" ry="45" stroke-dasharray="2 3"></ellipse>
+<ellipse cx="710" cy="440" rx="110" ry="55" stroke-dasharray="2 3"></ellipse>
+</g>
+<!-- INDIA STATE CHOROPLETH POLYGONS (RFCTLARR Risk Color Fill) -->
+<g class="cursor-pointer" id="state-polygons">
+<!-- Jammu & Kashmir / Ladakh (Medium 48) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 570,80 L 635,90 L 680,120 L 665,160 L 615,175 L 580,195 L 565,155 Z" fill="#ffad3a" fill-opacity="0.32" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Punjab (Medium 52) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 565,195 L 600,195 L 605,230 L 575,245 L 555,225 Z" fill="#ffad3a" fill-opacity="0.35" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Haryana (High Risk 71) -->
+<path class="hover:fill-opacity-55 transition-all" d="M 590,225 L 620,230 L 625,265 L 595,270 L 580,245 Z" fill="#f97316" fill-opacity="0.38" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Rajasthan (Low Risk 34) -->
+<path class="hover:fill-opacity-45 transition-all" d="M 480,250 L 580,245 L 605,305 L 575,370 L 500,370 L 465,315 Z" fill="#34d399" fill-opacity="0.28" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Gujarat (Medium Watchlist 58) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 440,360 L 515,360 L 545,405 L 530,460 L 465,470 L 435,420 Z" fill="#ffad3a" fill-opacity="0.35" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Uttar Pradesh (High Risk 67) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 625,240 L 735,260 L 760,320 L 705,365 L 630,345 L 615,280 Z" fill="#f97316" fill-opacity="0.34" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Madhya Pradesh (Medium 46) -->
+<path class="hover:fill-opacity-45 transition-all" d="M 535,375 L 690,360 L 730,425 L 670,475 L 560,465 L 530,410 Z" fill="#ffad3a" fill-opacity="0.30" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Bihar (High Risk 72) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 745,285 L 830,295 L 825,350 L 760,345 Z" fill="#f97316" fill-opacity="0.36" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- West Bengal (High Risk 69) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 830,320 L 870,335 L 850,425 L 815,420 L 820,360 Z" fill="#f97316" fill-opacity="0.35" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Odisha (Medium Watchlist 54) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 720,440 L 805,430 L 825,490 L 760,535 L 725,480 Z" fill="#ffad3a" fill-opacity="0.35" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Maharashtra (High Risk avg 74) -->
+<path class="hover:fill-opacity-60 transition-all" d="M 525,465 L 635,465 L 665,510 L 640,585 L 550,580 L 515,500 Z" fill="#f97316" fill-opacity="0.42" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Karnataka (Low Risk avg 29) -->
+<path class="hover:fill-opacity-45 transition-all" d="M 560,585 L 640,585 L 645,665 L 605,735 L 575,665 Z" fill="#34d399" fill-opacity="0.28" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Telangana (Medium 56) -->
+<path class="hover:fill-opacity-50 transition-all" d="M 645,510 L 710,510 L 705,580 L 650,580 Z" fill="#ffad3a" fill-opacity="0.36" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Tamil Nadu (Medium-Low 39) -->
+<path class="hover:fill-opacity-45 transition-all" d="M 610,695 L 675,690 L 670,780 L 625,820 L 605,745 Z" fill="#34d399" fill-opacity="0.32" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- Kerala (Low 31) -->
+<path class="hover:fill-opacity-45 transition-all" d="M 590,725 L 610,720 L 625,795 L 605,820 Z" fill="#34d399" fill-opacity="0.30" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- North-East Complex (Assam, Arunachal, etc.) -->
+<path d="M 875,290 L 960,260 L 990,305 L 945,360 L 890,350 Z" fill="#34d399" fill-opacity="0.25" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"></path>
+<!-- ACTIVE SELECTION: ANDHRA PRADESH (Crimson #EF4444 @ 45% + Electric Teal #2DD4BF glowing outline 2.5px) -->
+<g filter="url(#activePolyGlow)" id="andhra-pradesh-active">
+<path class="transition-all cursor-pointer hover:fill-opacity-60" d="M 655,575 L 720,535 L 765,540 L 780,590 L 730,670 L 675,685 L 650,640 L 670,610 Z" fill="#ef4444" fill-opacity="0.48" stroke="#2dd4bf" stroke-linejoin="round" stroke-width="2.8"></path>
+<!-- Active State Halo Pin Label -->
+<rect fill="#010f1f" fill-opacity="0.9" height="24" rx="4" stroke="#2dd4bf" stroke-width="1" width="138" x="715" y="605"></rect>
+<text class="font-label-caps text-label-caps tracking-widest font-bold" fill="#57f1db" x="724" y="621">ANDHRA PRADESH [AP]</text>
+</g>
+</g>
+<!-- NATIONAL STRATEGIC INFRASTRUCTURE CORRIDORS (Glowing dashed Electric Teal Lines) -->
+<g filter="url(#corridorGlow)" id="infrastructure-corridors">
+<!-- Delhi-Mumbai Expressway (PKG 1-8) -->
+<path d="M 605,270 L 575,335 L 545,385 L 530,440 L 525,495" fill="none" stroke="#2dd4bf" stroke-dasharray="7 5" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- WDFC Western Dedicated Freight Corridor -->
+<path d="M 590,265 L 560,330 L 525,390 L 515,480" fill="none" opacity="0.8" stroke="#7bd0ff" stroke-dasharray="5 4" stroke-width="2.2"></path>
+<!-- Eastern DFC (Ludhiana-Dankuni) -->
+<path d="M 585,215 L 635,270 L 705,330 L 780,355 L 835,420" fill="none" stroke="#2dd4bf" stroke-dasharray="8 5" stroke-linecap="round" stroke-width="2.4"></path>
+<!-- Visakhapatnam-Chennai Industrial Corridor (VCIC) -->
+<path d="M 775,545 L 755,590 L 715,645 L 670,705" fill="none" stroke="#2dd4bf" stroke-dasharray="9 4" stroke-linecap="round" stroke-width="3"></path>
+<!-- Krishna Canal Modernization Network (AP Active) -->
+<path d="M 685,585 L 705,600 L 735,608 L 760,612" fill="none" stroke="#57f1db" stroke-dasharray="6 3" stroke-linecap="round" stroke-width="3.2"></path>
+</g>
+<!-- Corridor Floating Labels -->
+<g class="fill-surface-variant font-label-caps text-label-caps font-semibold">
+<!-- DME Marker -->
+<rect fill="#051424" fill-opacity="0.85" height="18" rx="2" width="168" x="525" y="325"></rect>
+<text fill="#c4e7ff" x="530" y="338">DELHI-MUMBAI EXP (PKG 1-8)</text>
+<!-- EDFC Marker -->
+<rect fill="#051424" fill-opacity="0.85" height="18" rx="2" width="138" x="715" y="335"></rect>
+<text fill="#7bd0ff" x="720" y="348">EASTERN DFC (SEC-19)</text>
+<!-- VCIC Marker -->
+<rect fill="#051424" fill-opacity="0.9" height="18" rx="2" width="105" x="745" y="565"></rect>
+<text fill="#57f1db" x="750" y="578">VCIC INDUSTRIAL</text>
+<!-- Krishna Canal -->
+<rect fill="#051424" fill-opacity="0.9" height="18" rx="2" width="158" x="705" y="628"></rect>
+<text fill="#ffad3a" x="710" y="641">KRISHNA CANAL SEC-31</text>
+</g>
+<!-- Dynamic Pins & Pulsing Geospatial Hotspots -->
+<g id="project-markers">
+<!-- Critical Marker 1: Krishna AP (Score: 91) with CSS Pulse -->
+<g transform="translate(738, 610)">
+<circle class="animate-ping" fill="#ef4444" fill-opacity="0.25" r="18"></circle>
+<circle fill="#ef4444" fill-opacity="0.4" r="10"></circle>
+<circle fill="#ef4444" r="5" stroke="#ffffff" stroke-width="1.5"></circle>
+</g>
+<!-- Critical Marker 2: Sonipat DFC Land Parcel (Score: 89) -->
+<g transform="translate(605, 258)">
+<circle class="animate-ping" fill="#ef4444" fill-opacity="0.22" r="16" style="animation-duration: 2.4s;"></circle>
+<circle fill="#ef4444" fill-opacity="0.4" r="8"></circle>
+<circle fill="#ef4444" r="4.5" stroke="#ffffff" stroke-width="1.2"></circle>
+</g>
+<!-- High Risk Marker 1: NH-44 Nagpur Section (Score: 78) -->
+<g transform="translate(645, 450)">
+<circle fill="#f97316" r="5.5" stroke="#051424" stroke-width="1.5"></circle>
+<circle fill="none" opacity="0.6" r="9" stroke="#f97316" stroke-width="1"></circle>
+</g>
+<!-- High Risk Marker 2: Raigad Port Connector (Score: 76) -->
+<g transform="translate(528, 510)">
+<circle fill="#f97316" r="5" stroke="#051424" stroke-width="1.5"></circle>
+</g>
+<!-- Medium Risk Marker 1: Vadodara-Mumbai Rail (Score: 59) -->
+<g transform="translate(520, 435)">
+<circle fill="#ffad3a" r="4.5" stroke="#051424" stroke-width="1.5"></circle>
+</g>
+<!-- Medium Risk Marker 2: Cuttack Bypass Expansion (Score: 56) -->
+<g transform="translate(790, 465)">
+<circle fill="#ffad3a" r="4.5" stroke="#051424" stroke-width="1.5"></circle>
+</g>
+<!-- Low Risk Marker 1: Bhilwara 220kV Transmission Line (Score: 28) -->
+<g transform="translate(535, 310)">
+<circle fill="#34d399" r="4" stroke="#051424" stroke-width="1.5"></circle>
+</g>
+<!-- Low Risk Marker 2: Hassan-Mangalore Corridor (Score: 24) -->
+<g transform="translate(585, 680)">
+<circle fill="#34d399" r="4" stroke="#051424" stroke-width="1.5"></circle>
+</g>
+</g>
+</svg>
+</div>
+<!-- LEFT FLOATING GLASS PANEL: Map Telemetry & Layers (320px) -->
+<div class="absolute top-6 left-6 bottom-6 w-80 z-20 flex flex-col bg-surface-container-lowest/80 backdrop-blur-xl rounded-xl shadow-2xl p-space-md overflow-hidden">
+<!-- Panel Header -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Map Telemetry</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase">NIC-BHUVAN ACTIVE</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container font-telemetry-sm text-telemetry-sm text-on-surface-variant">EPSG:4326</span>
+</div>
+<!-- Scrollable Layer Controls & Filters -->
+<div class="flex-1 overflow-y-auto pr-1 flex flex-col gap-space-md mt-space-xs">
+<!-- SECTION 1: GIS Layers Toggles -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-sm">
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Active Carto Layers</div>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">layers</span>
+              State Risk Choropleth
+            </span>
+<input checked="" class="accent-primary h-4 w-4 rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-error">emergency</span>
+              Project Risk Pins &amp; P(Lapse)
+            </span>
+<input checked="" class="accent-primary h-4 w-4 rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-secondary">alt_route</span>
+              Infrastructure Corridors
+            </span>
+<input checked="" class="accent-primary h-4 w-4 rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between cursor-pointer group opacity-60">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+              Cadastral Khasra Grids
+            </span>
+<input class="accent-primary h-4 w-4 rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between cursor-pointer group opacity-60">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">terrain</span>
+              Elevation &amp; River Basins
+            </span>
+<input class="accent-primary h-4 w-4 rounded cursor-pointer" type="checkbox">
+</label>
+</div>
+<!-- SECTION 2: Statutory RFCTLARR Sector Filter Chips -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Sector Classification</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">1,248 TRACTS</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<button class="px-2 py-1 rounded bg-primary text-on-primary font-label-caps text-label-caps font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-xs">check</span> All (1,248)
+            </button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps transition-colors">
+              Roads (542)
+            </button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps transition-colors">
+              Railways (318)
+            </button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps transition-colors">
+              Irrigation (214)
+            </button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps transition-colors">
+              Energy (174)
+            </button>
+</div>
+</div>
+<!-- SECTION 3: Risk Level Chips -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Statutory Delay Risk P(Lapse)</span>
+<div class="grid grid-cols-2 gap-1.5">
+<button class="flex items-center gap-1.5 px-2 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-left">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Crit &gt;85 (312)</span>
+</button>
+<button class="flex items-center gap-1.5 px-2 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-left">
+<span class="w-2 h-2 rounded-full bg-tertiary-container shrink-0"></span>
+<span class="font-label-caps text-label-caps text-on-surface">High 65-85 (428)</span>
+</button>
+<button class="flex items-center gap-1.5 px-2 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-left">
+<span class="w-2 h-2 rounded-full bg-tertiary shrink-0"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Med 40-65 (310)</span>
+</button>
+<button class="flex items-center gap-1.5 px-2 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-left">
+<span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Low &lt;40 (198)</span>
+</button>
+</div>
+</div>
+<!-- SECTION 4: Statutory RFCTLARR Stage Dropdown -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Statutory Milestone Window</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer">
+<option>All Statutory Stages (Sec 11 to Sec 38)</option>
+<option>Sec 11: Preliminary Notification Window</option>
+<option>Sec 15: Hearing of Land Objections</option>
+<option>Sec 19: Final Declaration of Acquisition</option>
+<option selected="">Sec 23/25: Collector Enquiry &amp; Award Lapse Hazard</option>
+<option>Sec 31: R&amp;R Solatium Scheme Sanction</option>
+<option>Sec 38: Physical Possession &amp; Handover</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- SECTION 5: Statutory Lapse Horizon Filter -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Sec 25 Lapse Expiry Horizon</span>
+<div class="grid grid-cols-3 gap-1">
+<button class="py-1 rounded bg-error-container text-on-error-container font-label-caps text-label-caps font-bold">&lt; 45 Days</button>
+<button class="py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps">&lt; 90 Days</button>
+<button class="py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps">&lt; 180 Days</button>
+</div>
+</div>
+</div>
+<!-- Quick Reset Footer -->
+<div class="pt-space-sm mt-space-sm flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant/70">SYNC: 14 SEC AGO</span>
+<button class="font-label-caps text-label-caps text-primary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">restart_alt</span> RESET FILTERS
+        </button>
+</div>
+</div>
+<!-- RIGHT FLOATING GLASS PANEL: State Inspection Dossier (Andhra Pradesh) (340px) -->
+<div class="absolute top-6 right-6 w-[350px] max-h-[calc(100vh-114px)] z-20 flex flex-col bg-surface-container-lowest/85 backdrop-blur-xl rounded-xl shadow-2xl p-space-md overflow-hidden">
+<!-- Dossier Header -->
+<div class="flex items-start justify-between pb-space-xs">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">JURISDICTION DOSSIER</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Andhra Pradesh</h2>
+<div class="font-body-sm text-body-sm text-on-surface-variant">13 Statutory Districts · Amaravati Hub</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-error/20 text-error font-label-caps text-label-caps font-semibold">HIGH ALERT</span>
+</div>
+<!-- High-Level Statutory Metrics Strip -->
+<div class="grid grid-cols-3 gap-2 my-space-sm">
+<div class="bg-surface-container-low p-2 rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">PROJECTS</span>
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface">84</span>
+<span class="font-label-caps text-label-caps text-secondary-fixed mt-0.5">38 corridor km</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">HIGH/CRIT</span>
+<span class="font-telemetry-lg text-telemetry-lg text-error">38%</span>
+<span class="font-label-caps text-label-caps text-error mt-0.5">32 tracts flagged</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AVG DELAY</span>
+<span class="font-telemetry-lg text-telemetry-lg text-tertiary-container">142d</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-0.5">above benchmark</span>
+</div>
+</div>
+<!-- Statutory Lapse Warning Banner -->
+<div class="mb-space-sm p-2 rounded bg-error-container/40 flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-lg shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-error font-bold uppercase tracking-wide">Sec 25 Statutory Lapse Hazard</span>
+<p class="font-body-sm text-body-sm text-on-surface text-xs leading-tight mt-0.5">
+            3 projects will forfeit acquisition rights within 45 days if Solatium awards are not notified by CALA.
+          </p>
+</div>
+</div>
+<!-- Top 5 Riskiest Projects in Andhra Pradesh -->
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Critical RFCTLARR Pipeline</span>
+<span class="font-label-caps text-label-caps text-primary cursor-pointer hover:underline">SORT: SCORE ↓</span>
+</div>
+<!-- List of flagged corridor projects -->
+<div class="flex-1 overflow-y-auto space-y-2 pr-1">
+<!-- Project 1: Krishna Canal Extension -->
+<div class="p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Krishna Canal Extension</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-xs">Krishna Dist · Irrigation T-14</span>
+</div>
+<!-- Radial Mini Telemetry Score -->
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90">
+<circle class="text-surface-variant" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-width="2.5"></circle>
+<circle class="text-error" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-dasharray="81.6" stroke-dashoffset="7.3" stroke-width="2.5"></circle>
+</svg>
+<span class="absolute font-telemetry-sm text-telemetry-sm font-bold text-error">91</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1.5 border-t border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-error bg-error/15 px-1.5 py-0.5 rounded font-bold">SEC 31 R&amp;R · 44D LEFT</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-0.5">
+              ₹412 Cr Solatium <span class="material-symbols-outlined text-xs">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Project 2: Polavaram Right Main Canal -->
+<div class="p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Polavaram Right Main Canal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-xs">West Godavari · Water Basin</span>
+</div>
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90">
+<circle class="text-surface-variant" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-width="2.5"></circle>
+<circle class="text-tertiary-container" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-dasharray="81.6" stroke-dashoffset="9.8" stroke-width="2.5"></circle>
+</svg>
+<span class="absolute font-telemetry-sm text-telemetry-sm font-bold text-tertiary-container">88</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1.5 border-t border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-tertiary-container bg-tertiary-container/15 px-1.5 py-0.5 rounded font-bold">SEC 24 COURT STAY</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-0.5">
+              High Court DB <span class="material-symbols-outlined text-xs">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Project 3: Gundlakamma Reservoir Feeder -->
+<div class="p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Gundlakamma Reservoir Feeder</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-xs">Prakasam Dist · Package 4</span>
+</div>
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90">
+<circle class="text-surface-variant" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-width="2.5"></circle>
+<circle class="text-tertiary-container" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-dasharray="81.6" stroke-dashoffset="17.1" stroke-width="2.5"></circle>
+</svg>
+<span class="absolute font-telemetry-sm text-telemetry-sm font-bold text-tertiary-container">79</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1.5 border-t border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-tertiary-container bg-tertiary-container/15 px-1.5 py-0.5 rounded font-bold">PAF SURVEY PENDING</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-0.5">
+              684 Tenants <span class="material-symbols-outlined text-xs">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Project 4: Amaravati Ring Road Pkg 3 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Amaravati Ring Road Pkg 3</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-xs">Guntur Urban · NHAI Corridor</span>
+</div>
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90">
+<circle class="text-surface-variant" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-width="2.5"></circle>
+<circle class="text-tertiary-container" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-dasharray="81.6" stroke-dashoffset="21.2" stroke-width="2.5"></circle>
+</svg>
+<span class="absolute font-telemetry-sm text-telemetry-sm font-bold text-tertiary-container">74</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1.5 border-t border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-tertiary-fixed-dim bg-tertiary-container/10 px-1.5 py-0.5 rounded font-bold">LAND POOLING DISPUTE</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-0.5">
+              Sec 15 Objections <span class="material-symbols-outlined text-xs">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Project 5: Rayalaseema Thermal Rail Spur -->
+<div class="p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Rayalaseema Thermal Spur</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-xs">Kadapa · Freight Corridor</span>
+</div>
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90">
+<circle class="text-surface-variant" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-width="2.5"></circle>
+<circle class="text-tertiary" cx="16" cy="16" fill="none" r="13" stroke="currentColor" stroke-dasharray="81.6" stroke-dashoffset="26.1" stroke-width="2.5"></circle>
+</svg>
+<span class="absolute font-telemetry-sm text-telemetry-sm font-bold text-tertiary">68</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1.5 border-t border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-tertiary bg-tertiary/15 px-1.5 py-0.5 rounded font-bold">SEC 19 QUORUM WAITING</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-0.5">
+              14 Villages <span class="material-symbols-outlined text-xs">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-space-sm mt-space-xs">
+<a href="#" data-path="state-dashboard" class="w-full py-2.5 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container font-headline-sm text-body-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-lg"><span class="material-symbols-outlined text-sm">open_in_new</span><span class="">View AP Pipeline Dossier (Step 4)</span><span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+<!-- BOTTOM-LEFT FLOATING CHOROPLETH LEGEND (Next to left sidebar) -->
+<div class="absolute bottom-6 left-[360px] z-20 hidden md:flex items-center gap-space-md bg-surface-container-lowest/85 backdrop-blur-xl px-space-md py-2.5 rounded-xl shadow-xl">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Choropleth P(Lapse)</span>
+<span class="font-telemetry-sm text-[10px] text-on-surface-variant/70">RFCTLARR RISK INDEX</span>
+</div>
+<div class="h-6 w-px bg-outline-variant/40"></div>
+<!-- Risk Color Swatches -->
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#34D399]"></span>
+<span class="text-on-surface">&lt;40 Low</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#FBBF24]"></span>
+<span class="text-on-surface">40-65 Watch</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#F97316]"></span>
+<span class="text-on-surface">65-85 High</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
+<span class="text-error font-bold">&gt;85 Critical</span>
+</div>
+<div class="flex items-center gap-1.5 pl-2 border-l border-outline-variant/40">
+<span class="w-4 h-0.5 border-t border-dashed border-primary"></span>
+<span class="text-primary">National Corridor</span>
+</div>
+</div>
+</div>
+<!-- BOTTOM-RIGHT FLOATING MAP NAVIGATION & DATUM CONTROLS -->
+<div class="absolute bottom-6 right-[388px] z-20 hidden lg:flex items-center gap-2">
+<!-- Live Coordinate Chip -->
+<div class="bg-surface-container-lowest/85 backdrop-blur-xl px-space-sm py-2 rounded-lg shadow-xl flex items-center gap-2 font-telemetry-sm text-telemetry-sm text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary">my_location</span>
+<span class="">16.1824° N, 80.4532° E</span>
+<span class="text-on-surface-variant/60">·</span>
+<span class="text-secondary">Z: 6.4x</span>
+</div>
+<!-- Map Action Pills -->
+<div class="flex items-center bg-surface-container-lowest/85 backdrop-blur-xl rounded-lg shadow-xl p-1 gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface transition-colors flex items-center justify-center" id="zoom-in" title="Zoom In">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface transition-colors flex items-center justify-center" id="zoom-out" title="Zoom Out">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container-high text-primary font-label-caps text-label-caps transition-colors flex items-center gap-1" id="recenter-india" title="Recenter to National Extent">
+<span class="material-symbols-outlined text-xs">filter_center_focus</span> India Centered
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive State Interactivity & Click Handlers -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const statePolygons = document.querySelectorAll('#state-polygons path');
+      statePolygons.forEach(polygon => {
+        polygon.addEventListener('click', (e) => {
+          statePolygons.forEach(p => p.setAttribute('stroke-width', '1.2'));
+          e.target.setAttribute('stroke-width', '2.5');
+        });
+      });
+
+      const zoomIn = document.getElementById('zoom-in');
+      const zoomOut = document.getElementById('zoom-out');
+      const canvas = document.getElementById('gis-carto-canvas');
+      let currentScale = 1;
+
+      if (zoomIn && zoomOut && canvas) {
+        zoomIn.addEventListener('click', () => {
+          currentScale = Math.min(currentScale + 0.15, 1.8);
+          canvas.style.transform = `scale(${currentScale})`;
+          canvas.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+        zoomOut.addEventListener('click', () => {
+          currentScale = Math.max(currentScale - 0.15, 0.85);
+          canvas.style.transform = `scale(${currentScale})`;
+          canvas.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+        const recenterBtn = document.getElementById('recenter-india');
+        if (recenterBtn) {
+          recenterBtn.addEventListener('click', () => {
+            currentScale = 1;
+            canvas.style.transform = 'scale(1)';
+          });
+        }
+      }
+    });
+  </script>
+</div></main></div>
+
+<div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-space-sm bg-surface-container-lowest/95 backdrop-blur-xl border border-outline-variant/40 px-space-md py-2 rounded-full shadow-2xl"><a href="#" data-path="dashboard" class="flex items-center gap-1 px-space-sm py-1 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-caps text-label-caps"><span class="material-symbols-outlined text-sm">arrow_back</span><span class="">Back: Screen 2 (National Dashboard)</span></a><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-1.5 px-space-xs"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-caps text-label-caps text-primary font-bold uppercase tracking-wider">Step 3 of 8: National GIS Risk Map</span></div><div class="h-4 w-px bg-outline-variant/40"></div><a href="#" data-path="state-dashboard" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-on-primary font-label-caps text-label-caps font-bold hover:bg-primary-container transition-all shadow-sm"><span class="">Next: State Dashboard (Tablet) (Step 4)</span><span class="material-symbols-outlined text-sm">arrow_forward</span></a></div></body></html>
