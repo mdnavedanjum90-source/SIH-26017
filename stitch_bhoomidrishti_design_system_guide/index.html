@@ -401,40 +401,61 @@
       <div>IT Act 2000 Section 43A Compliant Audit Stream</div>
     </footer>
   </div>
-
   <!-- Client Router Script -->
   <script>
-    const views = ['dashboard', 'gis', 'pipeline', 'cala', 'rr', 'model-center', 'design-system'];
+    const routes = {
+      'dashboard': './bhoomidrishti_state_policymaker_national_risk_dashboard/code.html',
+      'gis': './bhoomidrishti_national_gis_risk_map/code.html',
+      'pipeline': './bhoomidrishti_state_policymaker_dashboard_tablet/code.html',
+      'cala': './bhoomidrishti_project_detail_krishna_canal_extension/code.html',
+      'rr': './bhoomidrishti_district_officer_cala_dashboard/code.html',
+      'model-center': './bhoomidrishti_model_health_intelligence/code.html',
+      'design-system': './bhoomidrishti_style_guide_design_system_specifications/code.html'
+    };
 
     function switchView(target) {
-      // 1. Hide all modules
+      if (!routes[target]) target = 'dashboard';
+
+      // 1. Hide summary blocks if any exist
       document.querySelectorAll('.module-view').forEach(el => el.classList.add('hidden'));
 
       // 2. Remove active state from all sidebar buttons
       document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
 
-      // 3. Show selected module
-      const selected = document.getElementById('view-' + target);
-      if (selected) selected.classList.remove('hidden');
-
-      // 4. Highlight active tab
+      // 3. Highlight the clicked tab
       const activeTab = document.getElementById('tab-' + target);
       if (activeTab) activeTab.classList.add('active');
 
-      // 5. Update browser URL hash without full page reload
+      // 4. Load the real page into the main viewport
+      let frame = document.getElementById('app-viewport');
+      if (!frame) {
+        // If no iframe exists yet, swap the main content area with one
+        const main = document.querySelector('main');
+        if (main) {
+          main.className = 'flex-1 h-full w-full overflow-hidden p-0';
+          main.innerHTML = '<iframe id="app-viewport" class="w-full h-full border-0 block bg-[#051424]"></iframe>';
+          frame = document.getElementById('app-viewport');
+        }
+      }
+
+      if (frame && frame.getAttribute('src') !== routes[target]) {
+        frame.src = routes[target];
+      }
+
+      // 5. Update browser URL hash
       window.location.hash = target;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Auto-detect view from URL hash on initial load
     document.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.replace('#', '');
-      if (views.includes(hash)) {
+      if (routes[hash]) {
         switchView(hash);
       } else {
         switchView('dashboard');
       }
     });
   </script>
+
 </body>
 </html>
