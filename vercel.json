@@ -1,8 +1,8 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/stitch_bhoomidrishti_design_system_guide/index.html"
+      "source": "/((?!stitch_bhoomidrishti_).*)",
+      "destination": "/stitch_bhoomidrishti_design_system_guide/index.html"
     }
   ]
 }
