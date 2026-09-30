@@ -1,8 +1,6 @@
 {
   "rewrites": [
-    {
-      "source": "/((?!stitch_bhoomidrishti_).*)",
-      "destination": "/stitch_bhoomidrishti_design_system_guide/index.html"
-    }
+    { "source": "/api/(.*)", "destination": "/backend/index.js" },
+    { "source": "/(.*)", "destination": "/stitch_bhoomidrishti_design_system_guide/index.html" }
   ]
 }
